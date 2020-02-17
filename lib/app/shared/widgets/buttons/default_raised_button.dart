@@ -7,6 +7,7 @@ class DefaultRaisedButton extends StatelessWidget {
   final Color textColor;
   final Color splashColor;
   final Function onPressed;
+  final ShapeBorder shape;
 
   DefaultRaisedButton({
     @required this.text,
@@ -15,11 +16,13 @@ class DefaultRaisedButton extends StatelessWidget {
     this.buttonColor,
     this.textColor,
     this.splashColor,
+    this.shape,
   });
 
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
+      shape: shape,
       color: buttonColor,
       onPressed: onPressed,
       splashColor: splashColor,

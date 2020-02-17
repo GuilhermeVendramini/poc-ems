@@ -66,6 +66,9 @@ class _LoginFormState extends State<LoginForm> {
               return CircularProgressIndicator();
             } else {
               return DefaultRaisedButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18.0),
+                ),
                 buttonColor: Colors.blue,
                 textColor: Colors.white,
                 text: i18nDefault.login.i18n,

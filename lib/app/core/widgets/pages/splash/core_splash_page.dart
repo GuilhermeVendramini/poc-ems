@@ -1,6 +1,5 @@
 import 'package:ems/app/core/core_controller.dart';
-import 'package:ems/app/shared/utils/i18n/i18n_config.dart';
-import 'package:ems/app/shared/widgets/components/default_logo.dart';
+import 'package:ems/app/shared/widgets/components/logo/default_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';

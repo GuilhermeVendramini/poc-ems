@@ -7,6 +7,7 @@ class DefaultOutlineButton extends StatelessWidget {
   final Color splashColor;
   final Color highlightedBorderColor;
   final Function onPressed;
+  final ShapeBorder shape;
 
   DefaultOutlineButton({
     @required this.text,
@@ -15,11 +16,13 @@ class DefaultOutlineButton extends StatelessWidget {
     this.textColor,
     this.splashColor,
     this.highlightedBorderColor,
+    this.shape,
   });
 
   @override
   Widget build(BuildContext context) {
     return OutlineButton(
+      shape: shape,
       onPressed: onPressed,
       splashColor: splashColor,
       highlightedBorderColor: highlightedBorderColor,

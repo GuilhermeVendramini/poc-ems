@@ -1,5 +1,3 @@
-import 'package:ems/app/core/widgets/pages/intro/components/buttons/forward_button.dart';
-import 'package:ems/app/core/widgets/pages/intro/components/dots/dots.dart';
 import 'package:flutter/material.dart';
 
 class StepOne extends StatelessWidget {
@@ -25,7 +23,6 @@ class StepOne extends StatelessWidget {
         height: 240.0,
         width: screenWidth,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(
               'Bem-vindo ao novo portal da EMS',
@@ -35,25 +32,21 @@ class StepOne extends StatelessWidget {
                 color: _defaultColor,
               ),
             ),
+            SizedBox(
+              height: 20.0,
+            ),
             Text(
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
               style: TextStyle(
                 color: _defaultColor,
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                DotsSteps(page: 0),
-                ForwardButton(
-                  pageController: pageController,
-                  page: 1,
-                ),
-              ],
-            ),
           ],
         ),
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(40.0),
+          ),
           color: Colors.blue,
           gradient: LinearGradient(
             colors: [Colors.blue[900], Colors.indigo[900]],

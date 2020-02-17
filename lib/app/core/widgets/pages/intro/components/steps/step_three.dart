@@ -1,8 +1,6 @@
-import 'package:ems/app/core/widgets/pages/intro/components/dots/dots.dart';
-import 'package:ems/app/shared/widgets/buttons/default_flat_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+
 
 class StepThree extends StatelessWidget {
   final double screenWidth;
@@ -23,46 +21,42 @@ class StepThree extends StatelessWidget {
         ),
       ),
       alignment: Alignment.bottomCenter,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(40.0),
-            height: 180.0,
-            width: screenWidth,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                DotsSteps(page: 2),
-                Text(
-                  'Donec faucibus, mauris sit amet hendrerit bibendum, erat est vehicula velit, vel elementum augue nibh a mi.',
-                  style: TextStyle(
-                    color: _defaultColor,
-                  ),
-                ),
-              ],
-            ),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              gradient: LinearGradient(
-                colors: [Colors.blue[900], Colors.indigo[900]],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+      child: Container(
+        padding: EdgeInsets.all(40.0),
+        height: 240.0,
+        width: screenWidth,
+        child: Column(
+          children: <Widget>[
+            Text(
+              'Proin facilisis nisi in felis fermentum tristique',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20.0,
+                color: _defaultColor,
               ),
             ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Text(
+              'Duis laoreet sodales tristique. Cras eget aliquet neque, eu tincidunt odio.',
+              style: TextStyle(
+                color: _defaultColor,
+              ),
+            ),
+          ],
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(40.0),
           ),
-          DefaultFlatButton(
-            shape: RoundedRectangleBorder(),
-            color: Colors.blue,
-            buttonWidth: screenWidth,
-            buttonHeight: 60,
-            textColor: _defaultColor,
-            onPressed: () {
-              Modular.to.pushReplacementNamed('/login');
-            },
-            text: 'Entrar',
+          color: Colors.blue,
+          gradient: LinearGradient(
+            colors: [Colors.blue[900], Colors.indigo[900]],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
-        ],
+        ),
       ),
     );
   }

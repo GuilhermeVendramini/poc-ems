@@ -50,6 +50,9 @@ class _RecoveryPasswordFormState extends State<RecoveryPasswordForm> {
               return CircularProgressIndicator();
             } else {
               return DefaultRaisedButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18.0),
+                ),
                 text: i18nDefault.submit.i18n,
                 onPressed: _recoveryPasswordController.emailValidated
                     ? _formSubmit
