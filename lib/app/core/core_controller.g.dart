@@ -73,4 +73,11 @@ mixin _$CoreController on _CoreBase, Store {
   Future<Null> logoutCurrentUser() {
     return _$logoutCurrentUserAsyncAction.run(() => super.logoutCurrentUser());
   }
+
+  @override
+  String toString() {
+    final string =
+        'currentUser: ${currentUser.toString()},userLoadStatus: ${userLoadStatus.toString()},messageStatus: ${messageStatus.toString()}';
+    return '{$string}';
+  }
 }

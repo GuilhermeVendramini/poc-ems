@@ -135,4 +135,11 @@ mixin _$RegisterController on _RegisterBase, Store {
       _$_RegisterBaseActionController.endAction(_$actionInfo);
     }
   }
+
+  @override
+  String toString() {
+    final string =
+        'registerUserStatus: ${registerUserStatus.toString()},email: ${email.toString()},password: ${password.toString()},confirmPassword: ${confirmPassword.toString()},messageStatus: ${messageStatus.toString()},emailPasswordValidated: ${emailPasswordValidated.toString()}';
+    return '{$string}';
+  }
 }

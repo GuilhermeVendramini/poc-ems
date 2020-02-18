@@ -21,7 +21,7 @@ class HomeHeaderBlock extends StatelessWidget {
             child: DefaultIconButton(
               icon: Icons.person,
               iconColor: Colors.white,
-              action: () {},
+              onPressed: () {},
             ),
           ),
           Positioned(
@@ -36,7 +36,7 @@ class HomeHeaderBlock extends StatelessWidget {
             child: DefaultIconButton(
               icon: Icons.notifications,
               iconColor: Colors.white,
-              action: () {},
+              onPressed: () {},
             ),
           ),
           Positioned(

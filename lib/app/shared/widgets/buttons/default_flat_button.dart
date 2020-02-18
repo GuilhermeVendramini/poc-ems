@@ -9,6 +9,7 @@ class DefaultFlatButton extends StatelessWidget {
   final Color splashColor;
   final Function onPressed;
   final ShapeBorder shape;
+  final double textSize;
 
   DefaultFlatButton({
     @required this.text,
@@ -19,6 +20,7 @@ class DefaultFlatButton extends StatelessWidget {
     this.color,
     this.textColor,
     this.splashColor,
+    this.textSize,
   });
 
   @override
@@ -36,6 +38,7 @@ class DefaultFlatButton extends StatelessWidget {
           text,
           style: TextStyle(
             color: textColor,
+            fontSize: textSize,
           ),
         ),
       ),

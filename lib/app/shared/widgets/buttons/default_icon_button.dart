@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class DefaultIconButton extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
-  final Function action;
+  final Function onPressed;
 
   DefaultIconButton({
     @required this.icon,
-    @required this.action,
+    @required this.onPressed,
     this.iconColor,
   });
 
@@ -18,7 +18,7 @@ class DefaultIconButton extends StatelessWidget {
         icon,
         color: iconColor,
       ),
-      onPressed: action,
+      onPressed: onPressed,
     );
   }
 }

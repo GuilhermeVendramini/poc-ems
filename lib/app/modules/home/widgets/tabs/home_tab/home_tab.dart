@@ -1,4 +1,5 @@
 import 'package:ems/app/modules/home/widgets/tabs/home_tab/widgets/blocks/home_header_block.dart';
+import 'package:ems/app/modules/home/widgets/tabs/home_tab/widgets/blocks/home_next_events_block.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatelessWidget {
@@ -13,7 +14,7 @@ class HomeTab extends StatelessWidget {
             padding: EdgeInsets.all(20.0),
             child: Column(
               children: <Widget>[
-                Text('Content'),
+                HomeNextEventsBlock(),
               ],
             ),
           ),

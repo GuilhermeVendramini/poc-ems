@@ -105,4 +105,11 @@ mixin _$LoginController on _LoginBase, Store {
       _$_LoginBaseActionController.endAction(_$actionInfo);
     }
   }
+
+  @override
+  String toString() {
+    final string =
+        'signInUserStatus: ${signInUserStatus.toString()},email: ${email.toString()},password: ${password.toString()},messageStatus: ${messageStatus.toString()},emailPasswordValidated: ${emailPasswordValidated.toString()}';
+    return '{$string}';
+  }
 }

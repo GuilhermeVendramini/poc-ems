@@ -89,4 +89,11 @@ mixin _$RecoveryPasswordController on _RecoveryPasswordBase, Store {
       _$_RecoveryPasswordBaseActionController.endAction(_$actionInfo);
     }
   }
+
+  @override
+  String toString() {
+    final string =
+        'recoveryPasswordStatus: ${recoveryPasswordStatus.toString()},email: ${email.toString()},messageStatus: ${messageStatus.toString()},emailValidated: ${emailValidated.toString()}';
+    return '{$string}';
+  }
 }
