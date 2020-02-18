@@ -75,9 +75,6 @@ class _RegisterFormState extends State<RegisterForm> {
               return CircularProgressIndicator();
             } else {
               return DefaultRaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                ),
                 text: i18nDefault.registerNewAccount.i18n,
                 onPressed: _registerController.emailPasswordValidated
                     ? _formSubmit
