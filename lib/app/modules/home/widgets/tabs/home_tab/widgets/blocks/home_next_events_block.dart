@@ -1,6 +1,5 @@
 import 'package:ems/app/modules/home/home_controller.dart';
 import 'package:ems/app/shared/widgets/buttons/default_see_more_button.dart';
-import 'package:ems/app/shared/widgets/cards/event_card.dart';
 import 'package:ems/app/shared/widgets/components/titles/default_title_block.dart';
 import 'package:ems/app/shared/widgets/lists/events/horizontal_pageview_events.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +54,7 @@ class HomeNextEventsBlock extends StatelessWidget {
                 if (_homeController.events != null &&
                     _homeController.events.length > 0) {
                   return Container(
-                    height: 300.0,
+                    height: 320.0,
                     child: HorizontalPageViewEvents(
                       events: _homeController.events,
                     ),

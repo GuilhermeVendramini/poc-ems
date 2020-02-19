@@ -26,13 +26,23 @@ class EventCard extends StatelessWidget {
                 image: NetworkImage(event.image),
               ),
             ),
-            height: 180.0,
+            height: 150.0,
           ),
           Padding(
             padding: EdgeInsets.all(10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                Text(
+                  '${event.date.toDate().day}/${event.date.toDate().month}/${event.date.toDate().year}',
+                  style: TextStyle(
+                    color: Colors.amber,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
                 Text(
                   event.title,
                   maxLines: 1,
