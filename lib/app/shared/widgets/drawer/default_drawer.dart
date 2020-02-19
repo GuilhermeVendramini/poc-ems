@@ -21,19 +21,10 @@ class _DefaultDrawerState extends State<DefaultDrawer> {
     return Drawer(
       child: ListView(
         children: <Widget>[
-          DrawerHeader(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Flutter ems'),
-                SizedBox(
-                  height: 10.0,
-                ),
-                _coreController.currentUser.name != null
-                    ? Text('Hi, ${_coreController.currentUser.name}')
-                    : Container(),
-              ],
-            ),
+          ListTile(
+            leading: Icon(Icons.event),
+            title: Text('Eventos'),
+            onTap: () {},
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),

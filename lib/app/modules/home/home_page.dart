@@ -1,24 +1,62 @@
 import 'package:ems/app/modules/home/widgets/tabs/home_tab/home_tab.dart';
+import 'package:ems/app/shared/widgets/drawer/default_drawer.dart';
 import 'package:ems/app/shared/widgets/tabs/defaultTab.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  TabController _tabController;
+  int _lastIndexTab = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: 5);
+    _tabController.addListener(_handleTabSelection);
+  }
+
+  void _handleTabSelection() {
+    if (_tabController.index != 4) {
+      _lastIndexTab = _tabController.index;
+    } else {
+      _tabController.index = _lastIndexTab;
+      _scaffoldKey.currentState.openEndDrawer();
+    }
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
+        key: _scaffoldKey,
+        endDrawer: DefaultDrawer(),
         body: TabBarView(
+          controller: _tabController,
           physics: NeverScrollableScrollPhysics(),
           children: [
             HomeTab(),
             Icon(Icons.directions_transit),
             Icon(Icons.directions_bike),
             Icon(Icons.directions_bike),
-            Icon(Icons.directions_bike),
+            Container(),
           ],
         ),
         bottomNavigationBar: TabBar(
+          controller: _tabController,
           labelColor: Colors.indigo,
           tabs: [
             DefaultTab(
