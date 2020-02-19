@@ -1,4 +1,5 @@
 import 'package:ems/app/core/core_controller.dart';
+import 'package:ems/app/core/core_initial_controller.dart';
 import 'package:ems/app/shared/widgets/components/logo/default_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -12,12 +13,15 @@ class CoreSplashPage extends StatefulWidget {
 
 class _CoreSplashPageState extends State<CoreSplashPage> {
   CoreController _coreController;
+  CoreInitialController _coreInitialController;
 
   @override
   void initState() {
     _coreController = Modular.get<CoreController>();
+    _coreInitialController = Modular.get<CoreInitialController>();
     _coreController.loadCurrentUser().then((_) {
       if (_coreController.currentUser != null) {
+        _coreInitialController.loadContents();
         Modular.to.pushReplacementNamed('/home');
       } else {
         Modular.to.pushReplacementNamed('/intro');

@@ -24,7 +24,9 @@ class _DefaultDrawerState extends State<DefaultDrawer> {
           ListTile(
             leading: Icon(Icons.event),
             title: Text('Eventos'),
-            onTap: () {},
+            onTap: () {
+              Modular.to.pushReplacementNamed('/events');
+            },
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),

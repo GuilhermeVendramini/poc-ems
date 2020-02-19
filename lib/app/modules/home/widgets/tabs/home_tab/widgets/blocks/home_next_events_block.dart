@@ -1,4 +1,4 @@
-import 'package:ems/app/modules/home/home_controller.dart';
+import 'package:ems/app/core/core_initial_controller.dart';
 import 'package:ems/app/shared/widgets/buttons/default_see_more_button.dart';
 import 'package:ems/app/shared/widgets/components/titles/default_title_block.dart';
 import 'package:ems/app/shared/widgets/lists/events/horizontal_pageview_events.dart';
@@ -9,7 +9,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 class HomeNextEventsBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    HomeController _homeController = Modular.get<HomeController>();
+    CoreInitialController _coreInitialController = Modular.get<CoreInitialController>();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,8 +22,8 @@ class HomeNextEventsBlock extends StatelessWidget {
             ),
             Observer(
               builder: (_) {
-                if (_homeController.events != null &&
-                    _homeController.events.length > 4) {
+                if (_coreInitialController.events != null &&
+                    _coreInitialController.events.length > 4) {
                   return DefaultSeeMoreButton(
                     text: 'Ver mais >',
                     onPressed: () {},
@@ -39,7 +39,7 @@ class HomeNextEventsBlock extends StatelessWidget {
         ),
         Observer(
           builder: (_) {
-            switch (_homeController.eventsStatus) {
+            switch (_coreInitialController.eventsStatus) {
               case EventsStatus.IDLE:
               case EventsStatus.LOADING:
                 return Center(
@@ -51,12 +51,12 @@ class HomeNextEventsBlock extends StatelessWidget {
                 break;
               case EventsStatus.DONE:
               default:
-                if (_homeController.events != null &&
-                    _homeController.events.length > 0) {
+                if (_coreInitialController.events != null &&
+                    _coreInitialController.events.length > 0) {
                   return Container(
                     height: 320.0,
                     child: HorizontalPageViewEvents(
-                      events: _homeController.events,
+                      events: _coreInitialController.events,
                     ),
                   );
                 }

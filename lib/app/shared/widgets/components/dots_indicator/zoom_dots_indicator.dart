@@ -19,8 +19,6 @@ class ZoomDotsIndicator extends AnimatedWidget {
   static const double _kMaxZoom = 1.3;
   static const double _kDotSpacing = 20.0;
 
-  Color dotColor;
-
   Widget _buildDot(int index) {
     double selectedness = Curves.easeOut.transform(
       max(
@@ -30,18 +28,14 @@ class ZoomDotsIndicator extends AnimatedWidget {
     );
     double zoom = 1.0 + (_kMaxZoom - 1.0) * selectedness;
 
-    if ((controller.page == null && index == 0) ||
-        (index == controller.page)) {
-      dotColor = color;
-    } else {
-      dotColor = Colors.grey[300];
-    }
-
     return Container(
       width: _kDotSpacing,
       child: Center(
         child: Material(
-          color: dotColor,
+          color: ((controller.page == null && index == 0) ||
+                  (index == controller.page))
+              ? color
+              : Colors.grey[300],
           type: MaterialType.circle,
           child: Container(
             width: _kDotSize * zoom,

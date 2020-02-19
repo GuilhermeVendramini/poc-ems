@@ -1,3 +1,4 @@
+import 'package:ems/app/core/core_initial_controller.dart';
 import 'package:ems/app/modules/auth/login/login_controller.dart';
 import 'package:ems/app/shared/models/user_model.dart';
 import 'package:ems/app/shared/utils/i18n/i18n_config.dart';
@@ -18,6 +19,7 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   LoginController _loginController;
+  CoreInitialController _coreInitialController;
 
   void _formSubmit() async {
     final _form = _formKey.currentState;
@@ -25,6 +27,7 @@ class _LoginFormState extends State<LoginForm> {
       _form.save();
       UserModel user = await _loginController.loginWithEmailPassword();
       if (user != null) {
+        _coreInitialController.loadContents();
         Modular.to.pushReplacementNamed('/home');
       } else {
         if (_loginController.messageStatus.isNotEmpty) {
@@ -40,6 +43,7 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     _loginController = Modular.get<LoginController>();
+    _coreInitialController = Modular.get<CoreInitialController>();
 
     return Form(
       key: _formKey,
