@@ -20,7 +20,6 @@ class HomeHeaderContent extends StatelessWidget {
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(60.0),
         ),
-        color: Colors.blue,
         gradient: LinearGradient(
           colors: [Colors.blue[900], Colors.indigo[900]],
           begin: Alignment.topCenter,

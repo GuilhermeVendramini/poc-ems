@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ems/app/shared/models/event_model.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class EventCard extends StatelessWidget {
               ),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(event.image),
+                image: CachedNetworkImageProvider(event.image),
               ),
             ),
             height: 150.0,
