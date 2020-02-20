@@ -32,7 +32,7 @@ abstract class _CoreInitialBase with Store {
       eventsStatus = EventsStatus.DONE;
     } catch (e) {
       eventsStatus = EventsStatus.ERROR;
-      print('Class MainController - loadEvents: $e');
+      print('Class CoreInitialController - loadEvents: $e');
     }
     return null;
   }
