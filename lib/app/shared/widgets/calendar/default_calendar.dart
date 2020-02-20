@@ -4,13 +4,17 @@ import 'package:table_calendar/table_calendar.dart';
 class DefaultCalendar extends StatelessWidget {
 
   final CalendarController calendarController;
+  final Function  onDaySelected;
+  final Function onVisibleDaysChanged;
+  final Map<DateTime, List> events;
 
-  DefaultCalendar({@required this.calendarController});
+  DefaultCalendar({@required this.calendarController, this.onDaySelected, this.onVisibleDaysChanged, this.events});
 
   @override
   Widget build(BuildContext context) {
     return TableCalendar(
       locale: 'pt-BR',
+      events: events,
       daysOfWeekStyle: DaysOfWeekStyle(
         weekendStyle: TextStyle(
           color: Colors.grey,
@@ -20,6 +24,7 @@ class DefaultCalendar extends StatelessWidget {
         ),
       ),
       calendarStyle: CalendarStyle(
+        markersColor: Colors.white,
         outsideStyle: TextStyle(
             color: Colors.black38
         ),
@@ -50,6 +55,8 @@ class DefaultCalendar extends StatelessWidget {
         formatButtonVisible: false,
       ),
       calendarController: calendarController,
+      onDaySelected: onDaySelected,
+      onVisibleDaysChanged: onVisibleDaysChanged,
     );
   }
 }
