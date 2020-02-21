@@ -1,5 +1,6 @@
 import 'package:ems/app/services/events/events_service.dart';
 import 'package:ems/app/shared/models/event_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 
@@ -78,5 +79,13 @@ abstract class _EventsBase with Store {
               .isAfter(DateTime(_now.year, _now.month, _now.day)))
           .toList();
     }
+  }
+
+  EventModel getEventById({@required String id}) {
+    if (events != null && events.isNotEmpty) {
+      print(events.firstWhere((event) => event.id == id));
+      return events.firstWhere((event) => event.id == id);
+    }
+    return null;
   }
 }

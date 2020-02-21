@@ -15,28 +15,22 @@ class HomeHeaderBlock extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           HomeHeaderContent(),
-          Positioned(
-            top: 30.0,
-            left: 10.0,
-            child: DefaultIconButton(
-              icon: Icons.person,
-              iconColor: Colors.white,
-              onPressed: () {},
-            ),
-          ),
-          Positioned(
-            top: 40.0,
-            right: 00.0,
-            left: 00.0,
-            child: DefaultLogoTitle(),
-          ),
-          Positioned(
-            top: 30.0,
-            right: 10.0,
-            child: DefaultIconButton(
-              icon: Icons.notifications,
-              iconColor: Colors.white,
-              onPressed: () {},
+          SafeArea(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                DefaultIconButton(
+                  icon: Icons.person,
+                  iconColor: Colors.white,
+                  onPressed: () {},
+                ),
+                DefaultLogoTitle(),
+                DefaultIconButton(
+                  icon: Icons.notifications,
+                  iconColor: Colors.white,
+                  onPressed: () {},
+                ),
+              ],
             ),
           ),
           Positioned(

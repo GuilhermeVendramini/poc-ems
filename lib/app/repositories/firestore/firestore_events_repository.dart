@@ -10,4 +10,13 @@ class FirestoreEventsRepository {
         .orderBy("date", descending: true)
         .getDocuments();
   }
+
+  Future<QuerySnapshot> loadEventById(String id) {
+    return firestore
+        .collection("events")
+        .where("id", isEqualTo: id)
+        .orderBy("date", descending: true)
+        .limit(1)
+        .getDocuments();
+  }
 }

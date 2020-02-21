@@ -39,23 +39,28 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      endDrawer: DefaultDrawer(),
-      body: TabBarView(
-        controller: _tabController,
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          HomeTab(),
-          Icon(Icons.directions_transit),
-          Icon(Icons.directions_bike),
-          Icon(Icons.directions_bike),
-          Container(),
-        ],
-      ),
-      bottomNavigationBar: DefaultTabBar(
-        scaffoldKey: _scaffoldKey,
-        tabController: _tabController,
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Scaffold(
+        key: _scaffoldKey,
+        endDrawer: DefaultDrawer(),
+        body: TabBarView(
+          controller: _tabController,
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            HomeTab(),
+            Icon(Icons.favorite),
+            Icon(Icons.supervisor_account),
+            Icon(Icons.redeem),
+            Container(),
+          ],
+        ),
+        bottomNavigationBar: DefaultTabBar(
+          scaffoldKey: _scaffoldKey,
+          tabController: _tabController,
+        ),
       ),
     );
   }

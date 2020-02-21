@@ -1,5 +1,6 @@
 import 'package:ems/app/modules/events/events_controller.dart';
 import 'package:ems/app/modules/events/widgets/blocks/events_block.dart';
+import 'package:ems/app/shared/utils/handle_tab_selection/defaultHandleTabSelection.dart';
 import 'package:ems/app/shared/widgets/calendar/default_calendar.dart';
 import 'package:ems/app/shared/widgets/components/titles/default_page_title.dart';
 import 'package:ems/app/shared/widgets/drawer/default_drawer.dart';
@@ -16,7 +17,7 @@ class EventsPage extends StatefulWidget {
 }
 
 class _EventsPageState extends State<EventsPage> with TickerProviderStateMixin {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   EventsController _eventsController;
 
   TabController _tabController;
@@ -32,15 +33,11 @@ class _EventsPageState extends State<EventsPage> with TickerProviderStateMixin {
     _calendarController = CalendarController();
   }
 
-  void _handleTabSelection() {
-    switch (_tabController.index) {
-      case 4:
-        _scaffoldKey.currentState.openEndDrawer();
-        break;
-      case 0:
-        Modular.to.pushReplacementNamed('/home');
-        break;
-    }
+  _handleTabSelection() {
+    defaultHandleTabSelection(
+      scaffoldKey: _scaffoldKey,
+      tabController: _tabController,
+    );
   }
 
   @override

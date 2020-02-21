@@ -50,4 +50,38 @@ class EventsService {
       return _events;
     }
   }
+
+  Future<EventModel> getCachedEventById(String id) async {
+    EventModel event;
+    event = await _hiveEventsRepository.getEventById(id);
+
+    return event;
+  }
+
+  Future<EventModel> getEventById(String id) async {
+    EventModel _event;
+
+    try {
+      bool expiredCache = await _hiveEventsRepository.expiredCache();
+
+      if (!expiredCache) {
+        _event = await getCachedEventById(id);
+        return _event;
+      }
+
+      QuerySnapshot _result = await _eventsRepository.loadEventById(id);
+      List<DocumentSnapshot> _documents = _result.documents;
+
+      if (_documents.isNotEmpty) {
+        _event =
+            _documents.map((doc) => EventModel.fromFirestore(doc)).first;
+        return _event;
+      }
+      return null;
+    } catch (e) {
+      print('Class EventsService - getEvents: $e');
+      _event = await getCachedEventById(id);
+      return _event;
+    }
+  }
 }

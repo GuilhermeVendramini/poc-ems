@@ -91,4 +91,15 @@ class HiveEventsRepository {
     }
     return null;
   }
+
+  Future<EventModel> getEventById(String id) async {
+    await loadEventsBox();
+    if (_eventsBox.isNotEmpty) {
+      EventModel _event = _eventsBox
+          .get('events').firstWhere((event) => event.id == id);
+
+      return _event;
+    }
+    return null;
+  }
 }

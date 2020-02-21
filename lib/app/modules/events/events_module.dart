@@ -6,18 +6,18 @@ import 'package:i18n_extension/i18n_widget.dart';
 class EventsModule extends ChildModule {
   @override
   List<Bind> get binds => [
-    Bind((i) => EventsController()),
-  ];
+        Bind((i) => EventsController()),
+      ];
 
   @override
   List<Router> get routers => [
-    Router(
-      '/',
-      child: (_, args) => I18n(
-        child: EventsPage(),
-      ),
-    ),
-  ];
+        Router(
+          '/',
+          child: (_, args) => I18n(
+            child: EventsPage(),
+          ),
+        ),
+      ];
 
   static Inject get to => Inject<EventsModule>.of();
 }

@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ems/app/shared/models/event_model.dart';
+import 'package:ems/app/shared/widgets/components/dates/default_display_date.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class EventCard extends StatelessWidget {
   final EventModel event;
@@ -15,7 +17,9 @@ class EventCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Modular.to.pushNamed('/event/${event.id}');
+        },
         child: Column(
           children: <Widget>[
             Container(
@@ -36,12 +40,9 @@ class EventCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    '${event.date.day}/${event.date.month}/${event.date.year}',
-                    style: TextStyle(
-                      color: Colors.amber,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  DefaultDisplayDate(
+                    dateTime: event.date,
+                    color: Colors.amber,
                   ),
                   SizedBox(
                     height: 10.0,
