@@ -23,7 +23,10 @@ class HiveEventsRepository {
     return;
   }
 
-  Future<Null> saveEvents({@required List<EventModel> events}) async {
+  Future<Null> saveEvents({
+    @required List<EventModel> events,
+    Duration cache = const Duration(days: 1),
+  }) async {
     await loadEventsBox();
     List<HiveEventModel> _hiveEventModel = events
         .map((event) => HiveEventModel(
@@ -38,7 +41,7 @@ class HiveEventsRepository {
 
     _eventsBoxCache.put(
       'cache',
-      DateTime.now().add(Duration(days: 1)),
+      DateTime.now().add(cache),
     );
 
     _eventsBox.put(
@@ -55,14 +58,23 @@ class HiveEventsRepository {
     return;
   }
 
-  Future<List<EventModel>> getEvents() async {
+  Future<bool> expiredCache() async {
     await loadEventsBox();
-    if (_eventsBox.isNotEmpty && _eventsBoxCache.isNotEmpty) {
+    if (_eventsBoxCache.isNotEmpty) {
       DateTime cache = _eventsBoxCache.get('cache');
+
       if (cache.isBefore(DateTime.now())) {
-        return null;
+        return true;
       }
 
+      return false;
+    }
+    return true;
+  }
+
+  Future<List<EventModel>> getEvents() async {
+    await loadEventsBox();
+    if (_eventsBox.isNotEmpty) {
       List<EventModel> _events = _eventsBox
           .get('events')
           .map((event) => EventModel(

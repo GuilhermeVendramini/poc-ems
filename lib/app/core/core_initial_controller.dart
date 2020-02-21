@@ -9,7 +9,6 @@ enum EventsStatus { IDLE, LOADING, ERROR, DONE }
 class CoreInitialController = _CoreInitialBase with _$CoreInitialController;
 
 abstract class _CoreInitialBase with Store {
-
   loadContents() {
     loadEvents();
     // loadFavorites();
@@ -30,8 +29,9 @@ abstract class _CoreInitialBase with Store {
       eventsStatus = EventsStatus.LOADING;
       events = await _eventsService.getEvents();
       DateTime _now = DateTime.now();
-      events = events.where((event) => event.date
-          .isAfter(DateTime(_now.year, _now.month, _now.day)))
+      events = events
+          .where((event) =>
+              event.date.isAfter(DateTime(_now.year, _now.month, _now.day)))
           .toList();
       eventsStatus = EventsStatus.DONE;
     } catch (e) {

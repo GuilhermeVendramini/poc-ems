@@ -11,30 +11,43 @@ class EventsService {
   final HiveEventsRepository _hiveEventsRepository =
       HiveEventsInstance.repository;
 
-  Future<List<EventModel>> getEvents() async {
-    try {
-      List<EventModel> events;
-      events = await _hiveEventsRepository.getEvents();
+  Future<List<EventModel>> getCachedEvents() async {
+    List<EventModel> events;
+    events = await _hiveEventsRepository.getEvents();
 
-      if (events != null && events.length > 0) {
-        events.sort((a, b) => a.date.compareTo(b.date));
-        return events;
+    if (events != null && events.length > 0) {
+      events.sort((a, b) => a.date.compareTo(b.date));
+      return events;
+    }
+
+    return null;
+  }
+
+  Future<List<EventModel>> getEvents() async {
+    List<EventModel> _events;
+    try {
+      bool expiredCache = await _hiveEventsRepository.expiredCache();
+
+      if (!expiredCache) {
+        _events = await getCachedEvents();
+        return _events;
       }
 
       QuerySnapshot _result = await _eventsRepository.loadEvents();
       List<DocumentSnapshot> _documents = _result.documents;
 
       if (_documents.isNotEmpty) {
-        events =
+        _events =
             _documents.map((doc) => EventModel.fromFirestore(doc)).toList();
-        _hiveEventsRepository.saveEvents(events: events);
-        events.sort((a, b) => a.date.compareTo(b.date));
-        return events;
+        _hiveEventsRepository.saveEvents(events: _events);
+        _events.sort((a, b) => a.date.compareTo(b.date));
+        return _events;
       }
       return null;
     } catch (e) {
       print('Class EventsService - getEvents: $e');
-      return null;
+      _events = await getCachedEvents();
+      return _events;
     }
   }
 }
