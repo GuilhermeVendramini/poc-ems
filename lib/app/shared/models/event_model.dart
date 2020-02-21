@@ -5,7 +5,7 @@ class EventModel {
   final String id;
   final String title;
   final String image;
-  final Timestamp date;
+  final DateTime date;
   final String description;
   final String body;
 
@@ -21,13 +21,15 @@ class EventModel {
   factory EventModel.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data;
 
+    Timestamp date = data['date'];
+
     return EventModel(
       id: data['id'],
       title: data['title'],
       image: data['image'],
       body: data['body'],
       description: data['description'],
-      date: data['date'],
+      date: date.toDate(),
     );
   }
 }

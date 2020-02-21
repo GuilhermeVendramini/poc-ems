@@ -1,4 +1,4 @@
-import 'package:ems/app/repositories/hive/hive_models_adapters/hive_user_model.dart';
+import 'package:ems/app/repositories/hive/hive_user/models_adapters/hive_user_model.dart';
 import 'package:ems/app/shared/models/user_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
@@ -36,7 +36,7 @@ class HiveUserRepository {
 
   Future<Null> deleteCurrentUser() async {
     await loadCurrentUserBox();
-    _currentUserBox.delete('currentUser');
+    await _currentUserBox.delete('currentUser');
     return;
   }
 

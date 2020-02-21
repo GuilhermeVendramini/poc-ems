@@ -1,4 +1,4 @@
-import 'package:ems/app/repositories/hive/hive_user_repository.dart';
+import 'package:ems/app/repositories/hive/hive_user/hive_user_repository.dart';
 
 class HiveUserInstance {
   HiveUserInstance._();

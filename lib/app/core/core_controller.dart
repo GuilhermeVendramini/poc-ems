@@ -1,7 +1,7 @@
 import 'package:ems/app/repositories/firebase/firebase_user_instance.dart';
 import 'package:ems/app/repositories/firebase/firebase_user_repository.dart';
-import 'package:ems/app/repositories/hive/hive_user_instance.dart';
-import 'package:ems/app/repositories/hive/hive_user_repository.dart';
+import 'package:ems/app/repositories/hive/hive_user/hive_user_instance.dart';
+import 'package:ems/app/repositories/hive/hive_user/hive_user_repository.dart';
 import 'package:ems/app/shared/models/user_model.dart';
 import 'package:flutter/services.dart';
 import 'package:mobx/mobx.dart';

@@ -34,13 +34,16 @@ class _HorizontalPageViewEventsState extends State<HorizontalPageViewEvents> {
 
   @override
   Widget build(BuildContext context) {
+
+    int eventsLength = widget.events.length >= 4 ? 4 : widget.events.length;
+
     return Column(
       children: <Widget>[
         Expanded(
           child: PageView.builder(
             controller: _pageController,
             scrollDirection: Axis.horizontal,
-            itemCount: widget.events.length,
+            itemCount: eventsLength,
             itemBuilder: (BuildContext context, int index) {
               return EventCard(
                 event: widget.events[index],
@@ -53,7 +56,7 @@ class _HorizontalPageViewEventsState extends State<HorizontalPageViewEvents> {
         ),
         ZoomDotsIndicator(
           controller: _pageController,
-          itemCount: widget.events.length,
+          itemCount: eventsLength,
           color: Colors.indigo,
           onPageSelected: (int page) {
             _pageController.animateToPage(

@@ -1,4 +1,4 @@
-import 'package:ems/app/services/benefits/events_service.dart';
+import 'package:ems/app/services/events/events_service.dart';
 import 'package:ems/app/shared/models/event_model.dart';
 import 'package:mobx/mobx.dart';
 
@@ -28,7 +28,11 @@ abstract class _CoreInitialBase with Store {
   Future<Null> loadEvents() async {
     try {
       eventsStatus = EventsStatus.LOADING;
-      events = await _eventsService.getEvents(limit: 4);
+      events = await _eventsService.getEvents();
+      DateTime _now = DateTime.now();
+      events = events.where((event) => event.date
+          .isAfter(DateTime(_now.year, _now.month, _now.day)))
+          .toList();
       eventsStatus = EventsStatus.DONE;
     } catch (e) {
       eventsStatus = EventsStatus.ERROR;

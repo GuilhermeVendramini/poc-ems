@@ -1,4 +1,4 @@
-import 'package:ems/app/services/benefits/events_service.dart';
+import 'package:ems/app/services/events/events_service.dart';
 import 'package:ems/app/shared/models/event_model.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
@@ -33,8 +33,9 @@ abstract class _EventsBase with Store {
     try {
       eventsStatus = EventsStatus.LOADING;
       events = await _eventsService.getEvents();
+      DateTime _now = DateTime.now();
       filteredEvents = events
-          .where((event) => event.date.toDate().isAfter(DateTime.now()))
+          .where((event) => event.date.isAfter(DateTime(_now.year, _now.month, _now.day)))
           .toList();
       eventsStatus = EventsStatus.DONE;
     } catch (e) {
@@ -47,7 +48,7 @@ abstract class _EventsBase with Store {
   Map<DateTime, List> getCalendarEvents() {
     Map<DateTime, List> mappedEvents = Map<DateTime, List>();
     events.forEach((event) {
-      DateTime dateTime = event.date.toDate();
+      DateTime dateTime = event.date;
       DateTime eventDate =
           DateTime(dateTime.year, dateTime.month, dateTime.day);
       if (mappedEvents[eventDate] == null) {
@@ -66,16 +67,15 @@ abstract class _EventsBase with Store {
       eventsBlockTitle = 'Eventos do dia ${dateTime.day}/${dateTime.month}/${dateTime.year}';
       filteredEvents = events
           .where((event) =>
-              DateFormat.yMMMd().format(event.date.toDate()) ==
+              DateFormat.yMMMd().format(event.date) ==
               DateFormat.yMMMd().format(dateTime))
           .toList();
     } else {
       eventsBlockTitle = 'Próximos eventos';
-      DateTime now = DateTime.now();
+      DateTime _now = DateTime.now();
       filteredEvents = events
           .where((event) => event.date
-              .toDate()
-              .isAfter(DateTime(now.year, now.month, now.day)))
+              .isAfter(DateTime(_now.year, _now.month, _now.day)))
           .toList();
     }
   }
