@@ -29,6 +29,13 @@ class _DefaultDrawerState extends State<DefaultDrawer> {
             },
           ),
           ListTile(
+            leading: Icon(Icons.school),
+            title: Text('Trilhas'),
+            onTap: () {
+              Modular.to.pushReplacementNamed('/trails');
+            },
+          ),
+          ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
             onTap: _logoutUser,

@@ -20,18 +20,21 @@ class HiveUserModelAdapter extends TypeAdapter<HiveUserModel> {
       id: fields[0] as String,
       name: fields[2] as String,
       email: fields[1] as String,
+      image: fields[3] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, HiveUserModel obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.email)
       ..writeByte(2)
-      ..write(obj.name);
+      ..write(obj.name)
+      ..writeByte(3)
+      ..write(obj.image);
   }
 }

@@ -62,73 +62,80 @@ class _EventsPageState extends State<EventsPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      endDrawer: DefaultDrawer(),
-      body: Observer(
-        builder: (_) {
-          switch (_eventsController.eventsStatus) {
-            case EventsStatus.LOADING:
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-              break;
-            case EventsStatus.ERROR:
-              return Center(
-                child: Text('Erro ao carregar os eventos'),
-              );
-              break;
-            case EventsStatus.DONE:
-              return SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.vertical(
-                          bottom: Radius.circular(60.0),
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Scaffold(
+        key: _scaffoldKey,
+        endDrawer: DefaultDrawer(),
+        body: Observer(
+          builder: (_) {
+            switch (_eventsController.eventsStatus) {
+              case EventsStatus.LOADING:
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+                break;
+              case EventsStatus.ERROR:
+                return Center(
+                  child: Text('Erro ao carregar os eventos'),
+                );
+                break;
+              case EventsStatus.DONE:
+                return SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(60.0),
+                          ),
+                          gradient: LinearGradient(
+                            colors: [Colors.blue[900], Colors.indigo[900]],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
                         ),
-                        gradient: LinearGradient(
-                          colors: [Colors.blue[900], Colors.indigo[900]],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                        child: SafeArea(
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              DefaultPageTitle(
+                                text: 'Eventos',
+                              ),
+                              Observer(
+                                builder: (_) {
+                                  return DefaultCalendar(
+                                    calendarController: _calendarController,
+                                    onDaySelected: _onDaySelected,
+                                    events: _eventsController.getCalendarEvents(),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 40.0,
-                          ),
-                          DefaultPageTitle(
-                            text: 'Eventos',
-                          ),
-                          Observer(
-                            builder: (_) {
-                              return DefaultCalendar(
-                                calendarController: _calendarController,
-                                onDaySelected: _onDaySelected,
-                                events: _eventsController.getCalendarEvents(),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    EventsBlock(),
-                  ],
-                ),
-              );
-              break;
-            case EventsStatus.IDLE:
-            default:
-              return Container();
-              break;
-          }
-        },
-      ),
-      bottomNavigationBar: DefaultTabBar(
-        scaffoldKey: _scaffoldKey,
-        tabController: _tabController,
+                      EventsBlock(),
+                    ],
+                  ),
+                );
+                break;
+              case EventsStatus.IDLE:
+              default:
+                return Container();
+                break;
+            }
+          },
+        ),
+        bottomNavigationBar: DefaultTabBar(
+          scaffoldKey: _scaffoldKey,
+          tabController: _tabController,
+        ),
       ),
     );
   }

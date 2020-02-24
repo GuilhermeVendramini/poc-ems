@@ -15,9 +15,13 @@ class HiveUserModel implements UserModel {
   @HiveField(2)
   String name;
 
+  @HiveField(3)
+  String image;
+
   HiveUserModel({
     @required this.id,
     @required this.name,
     @required this.email,
+    this.image,
   });
 }
