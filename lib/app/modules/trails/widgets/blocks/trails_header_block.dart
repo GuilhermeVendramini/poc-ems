@@ -3,10 +3,6 @@ import 'package:ems/app/shared/widgets/components/titles/default_page_title.dart
 import 'package:flutter/material.dart';
 
 class TrailsHeaderBlock extends StatelessWidget {
-  final TabController trailsTabController;
-
-  TrailsHeaderBlock({@required this.trailsTabController});
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -37,15 +33,6 @@ class TrailsHeaderBlock extends StatelessWidget {
                 height: 20.0,
               ),
               TrailsProfileBlock(),
-              TabBar(
-                controller: trailsTabController,
-                unselectedLabelColor: Colors.grey[400],
-                labelColor: Colors.blueAccent,
-                tabs: [
-                  Tab(child: Text('Negócio')),
-                  Tab(child: Text('Carreira')),
-                ],
-              ),
             ],
           ),
         ),

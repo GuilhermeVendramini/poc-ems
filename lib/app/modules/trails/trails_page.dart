@@ -45,29 +45,36 @@ class _TrailsPageState extends State<TrailsPage> with TickerProviderStateMixin {
       child: Scaffold(
         key: _scaffoldKey,
         endDrawer: DefaultDrawer(),
-        body: CustomScrollView(
-          slivers: <Widget>[
-            SliverList(
-              delegate: SliverChildListDelegate(<Widget>[
-                TrailsHeaderBlock(
-                  trailsTabController: _trailsTabController,
-                ),
-              ]),
-            ),
-            SliverGrid(
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
-              delegate: SliverChildListDelegate(<Widget>[
-                TabBarView(
-                  controller: _trailsTabController,
-                  children: [
-                    Icon(Icons.directions_car),
-                    Icon(Icons.directions_transit),
-                  ],
-                ),
-              ]),
-            ),
-          ],
+        body: NestedScrollView(
+          headerSliverBuilder: (_, __) {
+            return <Widget>[
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  TrailsHeaderBlock(),
+                  TabBar(
+                    controller: _trailsTabController,
+                    unselectedLabelColor: Colors.grey[400],
+                    labelColor: Colors.blueAccent,
+                    tabs: [
+                      Tab(child: Text('Negócio')),
+                      Tab(child: Text('Carreira')),
+                    ],
+                  ),
+                ]),
+              ),
+            ];
+          },
+          body: TabBarView(
+            controller: _trailsTabController,
+            children: <Widget>[
+              Tab(
+                child: Text('Tab 1'),
+              ),
+              Tab(
+                child: Text('Tab 2'),
+              ),
+            ],
+          ),
         ),
         bottomNavigationBar: DefaultTabBar(
           scaffoldKey: _scaffoldKey,
