@@ -67,12 +67,8 @@ class _TrailsPageState extends State<TrailsPage> with TickerProviderStateMixin {
           body: TabBarView(
             controller: _trailsTabController,
             children: <Widget>[
-              Tab(
-                child: Text('Tab 1'),
-              ),
-              Tab(
-                child: Text('Tab 2'),
-              ),
+              Text('Tab 1'),
+              Text('Tab 2'),
             ],
           ),
         ),
