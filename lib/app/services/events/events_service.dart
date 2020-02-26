@@ -74,8 +74,7 @@ class EventsService {
       List<DocumentSnapshot> _documents = _result.documents;
 
       if (_documents.isNotEmpty) {
-        _event =
-            _documents.map((doc) => EventModel.fromFirestore(doc)).first;
+        _event = _documents.map((doc) => EventModel.fromFirestore(doc)).first;
         return _event;
       }
       return null;

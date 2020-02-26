@@ -2,7 +2,6 @@ import 'package:ems/app/shared/widgets/tabs/defaultTab.dart';
 import 'package:flutter/material.dart';
 
 class DefaultTabBar extends StatelessWidget {
-
   final TabController tabController;
   final GlobalKey<ScaffoldState> scaffoldKey;
 

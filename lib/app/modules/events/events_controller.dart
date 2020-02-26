@@ -36,7 +36,8 @@ abstract class _EventsBase with Store {
       events = await _eventsService.getEvents();
       DateTime _now = DateTime.now();
       filteredEvents = events
-          .where((event) => event.date.isAfter(DateTime(_now.year, _now.month, _now.day)))
+          .where((event) =>
+              event.date.isAfter(DateTime(_now.year, _now.month, _now.day)))
           .toList();
       eventsStatus = EventsStatus.DONE;
     } catch (e) {
@@ -65,7 +66,8 @@ abstract class _EventsBase with Store {
   @action
   void filterEvents({DateTime dateTime}) {
     if (dateTime != null) {
-      eventsBlockTitle = 'Eventos do dia ${dateTime.day}/${dateTime.month}/${dateTime.year}';
+      eventsBlockTitle =
+          'Eventos do dia ${dateTime.day}/${dateTime.month}/${dateTime.year}';
       filteredEvents = events
           .where((event) =>
               DateFormat.yMMMd().format(event.date) ==
@@ -75,8 +77,8 @@ abstract class _EventsBase with Store {
       eventsBlockTitle = 'Próximos eventos';
       DateTime _now = DateTime.now();
       filteredEvents = events
-          .where((event) => event.date
-              .isAfter(DateTime(_now.year, _now.month, _now.day)))
+          .where((event) =>
+              event.date.isAfter(DateTime(_now.year, _now.month, _now.day)))
           .toList();
     }
   }

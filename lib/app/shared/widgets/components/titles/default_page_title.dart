@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class DefaultPageTitle extends StatelessWidget {
-
   final String text;
 
   DefaultPageTitle({@required this.text});

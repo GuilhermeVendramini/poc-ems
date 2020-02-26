@@ -4,5 +4,4 @@ part 'trails_controller.g.dart';
 
 class TrailsController = _TrailsBase with _$TrailsController;
 
-abstract class _TrailsBase with Store {
-}
+abstract class _TrailsBase with Store {}

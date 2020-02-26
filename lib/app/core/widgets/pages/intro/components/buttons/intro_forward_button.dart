@@ -10,8 +10,6 @@ class IntroForwardButton extends AnimatedWidget {
     @required this.itemCount,
   }) : super(listenable: pageController);
 
-
-
   @override
   Widget build(BuildContext context) {
     if (pageController.hasClients &&
@@ -19,7 +17,7 @@ class IntroForwardButton extends AnimatedWidget {
         pageController.page.floor() == itemCount - 1) {
       return RaisedButton(
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0),
+          borderRadius: BorderRadius.circular(18.0),
         ),
         onPressed: () {
           Modular.to.pushReplacementNamed('/login');

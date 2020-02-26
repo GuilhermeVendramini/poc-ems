@@ -4,17 +4,16 @@ import 'package:ems/app/shared/widgets/components/dots_indicator/zoom_dots_indic
 import 'package:flutter/material.dart';
 
 class HorizontalPageViewEvents extends StatefulWidget {
-
   final List<EventModel> events;
 
   HorizontalPageViewEvents({@required this.events});
 
   @override
-  _HorizontalPageViewEventsState createState() => _HorizontalPageViewEventsState();
+  _HorizontalPageViewEventsState createState() =>
+      _HorizontalPageViewEventsState();
 }
 
 class _HorizontalPageViewEventsState extends State<HorizontalPageViewEvents> {
-
   PageController _pageController;
 
   @override
@@ -34,7 +33,6 @@ class _HorizontalPageViewEventsState extends State<HorizontalPageViewEvents> {
 
   @override
   Widget build(BuildContext context) {
-
     int eventsLength = widget.events.length >= 4 ? 4 : widget.events.length;
 
     return Column(

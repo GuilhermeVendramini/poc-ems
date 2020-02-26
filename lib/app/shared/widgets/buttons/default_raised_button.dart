@@ -22,9 +22,11 @@ class DefaultRaisedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-      shape: shape != null ? shape : RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
-      ),
+      shape: shape != null
+          ? shape
+          : RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+            ),
       color: buttonColor,
       onPressed: onPressed,
       splashColor: splashColor,

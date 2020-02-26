@@ -1,14 +1,13 @@
 import 'package:ems/app/modules/trails/widgets/components/profile/trails_profile_avatar.dart';
 import 'package:ems/app/modules/trails/widgets/components/profile/trails_profile_level.dart';
+import 'package:ems/app/modules/trails/widgets/components/profile/trails_profile_modules.dart';
 import 'package:ems/app/modules/trails/widgets/components/profile/trails_profile_name.dart';
 import 'package:ems/app/modules/trails/widgets/components/profile/trails_profile_points.dart';
-import 'package:ems/app/modules/trails/widgets/components/profile/trails_profile_modules.dart';
 import 'package:ems/app/modules/trails/widgets/components/profile/trails_profile_progress.dart';
 import 'package:ems/app/shared/widgets/buttons/default_flat_button.dart';
 import 'package:flutter/material.dart';
 
-class TrailsProfileBox extends StatelessWidget {
-
+class TrailsProfileBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _verticalDivider = Container(

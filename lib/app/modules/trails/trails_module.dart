@@ -11,9 +11,10 @@ class TrailsModule extends ChildModule {
 
   @override
   List<Router> get routers => [
-        Router('/', child: (_, args) => I18n(
-          child: TrailsPage(),
-        )),
+        Router('/',
+            child: (_, args) => I18n(
+                  child: TrailsPage(),
+                )),
       ];
 
   static Inject get to => Inject<TrailsModule>.of();

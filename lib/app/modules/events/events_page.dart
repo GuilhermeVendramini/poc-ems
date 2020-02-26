@@ -112,7 +112,8 @@ class _EventsPageState extends State<EventsPage> with TickerProviderStateMixin {
                                   return DefaultCalendar(
                                     calendarController: _calendarController,
                                     onDaySelected: _onDaySelected,
-                                    events: _eventsController.getCalendarEvents(),
+                                    events:
+                                        _eventsController.getCalendarEvents(),
                                   );
                                 },
                               ),

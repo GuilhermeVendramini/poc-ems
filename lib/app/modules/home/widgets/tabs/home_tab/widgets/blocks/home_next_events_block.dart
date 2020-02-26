@@ -9,7 +9,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 class HomeNextEventsBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    CoreInitialController _coreInitialController = Modular.get<CoreInitialController>();
+    CoreInitialController _coreInitialController =
+        Modular.get<CoreInitialController>();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

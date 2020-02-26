@@ -18,7 +18,9 @@ class FirebaseUserRepository {
       IdTokenResult idToken = await firebaseUser.getIdToken();
       return UserModel(
         id: idToken.token,
-        name: firebaseUser.displayName != null ? firebaseUser.displayName : 'Doutor(a)',
+        name: firebaseUser.displayName != null
+            ? firebaseUser.displayName
+            : 'Doutor(a)',
         email: firebaseUser.email,
       );
     }

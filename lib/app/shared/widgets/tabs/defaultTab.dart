@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class DefaultTab extends StatelessWidget {
-
   final IconData icon;
   final String text;
 
@@ -9,7 +8,7 @@ class DefaultTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Tab(
+    return Tab(
       icon: Icon(icon),
       child: Text(
         text,

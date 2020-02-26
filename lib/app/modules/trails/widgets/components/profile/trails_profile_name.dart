@@ -5,7 +5,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 class TrailsProfileName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     CoreController _coreController = Modular.get<CoreController>();
 
     return Text(

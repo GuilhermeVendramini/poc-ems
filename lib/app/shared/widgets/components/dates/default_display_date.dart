@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class DefaultDisplayDate extends StatelessWidget {
-
   final DateTime dateTime;
   final Color color;
   final double fontSize;
@@ -10,7 +9,7 @@ class DefaultDisplayDate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Text(
+    return Text(
       '${dateTime.day}/${dateTime.month}/${dateTime.year}',
       style: TextStyle(
         color: color,

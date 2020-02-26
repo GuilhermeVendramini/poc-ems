@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class StepThree extends StatelessWidget {
   final double screenWidth;
   final PageController pageController;

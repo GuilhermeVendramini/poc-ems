@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class DefaultCalendar extends StatelessWidget {
-
   final CalendarController calendarController;
-  final Function  onDaySelected;
+  final Function onDaySelected;
   final Function onVisibleDaysChanged;
   final Map<DateTime, List> events;
 
-  DefaultCalendar({@required this.calendarController, this.onDaySelected, this.onVisibleDaysChanged, this.events});
+  DefaultCalendar(
+      {@required this.calendarController,
+      this.onDaySelected,
+      this.onVisibleDaysChanged,
+      this.events});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +28,7 @@ class DefaultCalendar extends StatelessWidget {
       ),
       calendarStyle: CalendarStyle(
         markersColor: Colors.white,
-        outsideStyle: TextStyle(
-            color: Colors.black38
-        ),
+        outsideStyle: TextStyle(color: Colors.black38),
         outsideWeekendStyle: TextStyle(
           color: Colors.black38,
         ),
