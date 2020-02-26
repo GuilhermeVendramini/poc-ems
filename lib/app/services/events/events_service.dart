@@ -25,7 +25,8 @@ class EventsService {
 
   Future<List<EventModel>> getEvents() async {
     List<EventModel> _events;
-    //try {
+
+    try {
       bool expiredCache = await _hiveEventsRepository.expiredCache();
 
       if (!expiredCache) {
@@ -44,11 +45,11 @@ class EventsService {
         return _events;
       }
       return null;
-/*    } catch (e) {
+    } catch (e) {
       print('Class EventsService - getEvents: $e');
       _events = await getCachedEvents();
       return _events;
-    }*/
+    }
   }
 
   Future<EventModel> getCachedEventById(String id) async {
