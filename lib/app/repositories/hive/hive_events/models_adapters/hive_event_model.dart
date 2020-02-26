@@ -32,5 +32,4 @@ class HiveEventModel implements EventModel {
     @required this.description,
     @required this.image,
   });
-
 }

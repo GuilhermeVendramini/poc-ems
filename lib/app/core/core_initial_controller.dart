@@ -25,7 +25,7 @@ abstract class _CoreInitialBase with Store {
 
   @action
   Future<Null> loadEvents() async {
-    try {
+    //try {
       eventsStatus = EventsStatus.LOADING;
       events = await _eventsService.getEvents();
       DateTime _now = DateTime.now();
@@ -34,10 +34,10 @@ abstract class _CoreInitialBase with Store {
               event.date.isAfter(DateTime(_now.year, _now.month, _now.day)))
           .toList();
       eventsStatus = EventsStatus.DONE;
-    } catch (e) {
+/*    } catch (e) {
       eventsStatus = EventsStatus.ERROR;
       print('Class CoreInitialController - loadEvents: $e');
-    }
+    }*/
     return null;
   }
 }

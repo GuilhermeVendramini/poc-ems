@@ -5,17 +5,15 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
 class HiveEventsRepository {
-  Box<List> _eventsBox;
-  Box<DateTime> _eventsBoxCache;
+  Box<Map> _eventsBox;
 
   Future<Null> loadEventsBox() async {
-    if (_eventsBox == null && _eventsBoxCache == null) {
+    if (_eventsBox == null) {
       try {
         var dir = await getApplicationDocumentsDirectory();
         Hive.init(dir.path);
         Hive.registerAdapter(HiveEventModelAdapter());
-        _eventsBox = await Hive.openBox<List>('eventsBox');
-        _eventsBoxCache = await Hive.openBox<DateTime>('eventsBoxCache');
+        _eventsBox = await Hive.openBox<Map>('eventsBox');
       } catch (e) {
         throw e;
       }
@@ -28,7 +26,7 @@ class HiveEventsRepository {
     Duration cache = const Duration(days: 1),
   }) async {
     await loadEventsBox();
-    List<HiveEventModel> _hiveEventModel = events
+    List<HiveEventModel> _listHiveEventModel = events
         .map((event) => HiveEventModel(
               title: event.title,
               id: event.id,
@@ -39,14 +37,9 @@ class HiveEventsRepository {
             ))
         .toList();
 
-    _eventsBoxCache.put(
-      'cache',
-      DateTime.now().add(cache),
-    );
-
     _eventsBox.put(
       'events',
-      _hiveEventModel,
+      {'data': _listHiveEventModel, 'cache_expire': DateTime.now().add(cache)},
     );
     return;
   }
@@ -54,14 +47,13 @@ class HiveEventsRepository {
   Future<Null> deleteEvents() async {
     await loadEventsBox();
     await _eventsBox.delete('events');
-    await _eventsBoxCache.delete('cache');
     return;
   }
 
   Future<bool> expiredCache() async {
     await loadEventsBox();
-    if (_eventsBoxCache.isNotEmpty) {
-      DateTime cache = _eventsBoxCache.get('cache');
+    if (_eventsBox.isNotEmpty) {
+      DateTime cache = _eventsBox.get('events')['cache_expire'];
 
       if (cache.isBefore(DateTime.now())) {
         return true;
@@ -75,9 +67,9 @@ class HiveEventsRepository {
   Future<List<EventModel>> getEvents() async {
     await loadEventsBox();
     if (_eventsBox.isNotEmpty) {
-      List<EventModel> _events = _eventsBox
-          .get('events')
-          .map((event) => EventModel(
+      List<dynamic> _hiveEvents = _eventsBox.get('events')['data'];
+      List<EventModel> _events = _hiveEvents
+          .map<EventModel>((event) => EventModel(
                 id: event.id,
                 image: event.image,
                 body: event.body,
@@ -86,7 +78,6 @@ class HiveEventsRepository {
                 title: event.title,
               ))
           .toList();
-
       return _events;
     }
     return null;
@@ -96,7 +87,8 @@ class HiveEventsRepository {
     await loadEventsBox();
     if (_eventsBox.isNotEmpty) {
       EventModel _event = _eventsBox
-          .get('events').firstWhere((event) => event.id == id);
+          .get('events')['data']
+          .firstWhere((event) => event.id == id);
 
       return _event;
     }
