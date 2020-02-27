@@ -22,7 +22,9 @@ class TrailsModel {
       id: data['id'],
       title: data['title'],
       category: data['category'],
-      trails: data['trails'].map((trail) => TrailModel.fromFirestore(trail)),
+      trails: data['trails']
+          .map<TrailModel>((trail) => TrailModel.fromJson(trail))
+          .toList(),
     );
   }
 }

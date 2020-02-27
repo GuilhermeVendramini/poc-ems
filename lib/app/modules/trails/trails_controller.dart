@@ -33,4 +33,12 @@ abstract class _TrailsBase with Store {
     }
     return null;
   }
+
+  @action
+  List<TrailsModel> getTrailsByCategory(int category) {
+    if (trails != null && trails.isNotEmpty) {
+      return trails.where((trail) => trail.category == category).toList();
+    }
+    return null;
+  }
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class DefaultTitleBlock extends StatelessWidget {
+class DefaultBlockTitle extends StatelessWidget {
   final String text;
 
-  DefaultTitleBlock({@required this.text});
+  DefaultBlockTitle({@required this.text});
 
   @override
   Widget build(BuildContext context) {

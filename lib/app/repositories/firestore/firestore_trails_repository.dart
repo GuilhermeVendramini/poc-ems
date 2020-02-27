@@ -6,13 +6,13 @@ class FirestoreTrailsRepository {
 
   Future<QuerySnapshot> loadTrails() {
     return firestore
-        .collection("app.services.trails")
+        .collection("trails")
         .getDocuments();
   }
 
   Future<QuerySnapshot> loadTrailById(int id) {
     return firestore
-        .collection("app.services.trails")
+        .collection("trails")
         .where("id", isEqualTo: id)
         .limit(1)
         .getDocuments();

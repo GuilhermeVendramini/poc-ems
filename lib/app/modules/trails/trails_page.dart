@@ -1,3 +1,4 @@
+import 'package:ems/app/modules/trails/widgets/blocks/trails_block.dart';
 import 'package:ems/app/modules/trails/widgets/blocks/trails_header_block.dart';
 import 'package:ems/app/shared/utils/handle_tab_selection/defaultHandleTabSelection.dart';
 import 'package:ems/app/shared/widgets/drawer/default_drawer.dart';
@@ -65,9 +66,12 @@ class _TrailsPageState extends State<TrailsPage> with TickerProviderStateMixin {
             ];
           },
           body: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
             controller: _trailsTabController,
             children: <Widget>[
-              Text('Tab 1'),
+              TrailsBlock(
+                category: 1,
+              ),
               Icon(Icons.work),
             ],
           ),

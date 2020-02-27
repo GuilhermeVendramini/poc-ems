@@ -1,6 +1,6 @@
 import 'package:ems/app/core/core_initial_controller.dart';
 import 'package:ems/app/shared/widgets/buttons/default_see_more_button.dart';
-import 'package:ems/app/shared/widgets/components/titles/default_title_block.dart';
+import 'package:ems/app/shared/widgets/components/titles/default_block_title.dart';
 import 'package:ems/app/shared/widgets/lists/events/horizontal_pageview_events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -18,7 +18,7 @@ class HomeNextEventsBlock extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            DefaultTitleBlock(
+            DefaultBlockTitle(
               text: 'Próximos eventos',
             ),
             Observer(

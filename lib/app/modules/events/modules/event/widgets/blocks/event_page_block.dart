@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ems/app/shared/models/event_model.dart';
 import 'package:ems/app/shared/widgets/components/body/default_body.dart';
 import 'package:ems/app/shared/widgets/components/dates/default_display_date.dart';
-import 'package:ems/app/shared/widgets/components/titles/default_title_block.dart';
+import 'package:ems/app/shared/widgets/components/titles/default_block_title.dart';
 import 'package:flutter/material.dart';
 
 class EventPageBlock extends StatelessWidget {
@@ -29,7 +29,7 @@ class EventPageBlock extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              DefaultTitleBlock(
+              DefaultBlockTitle(
                 text: event.title,
               ),
               SizedBox(

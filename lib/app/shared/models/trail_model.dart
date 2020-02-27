@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 class TrailModel {
@@ -18,14 +17,12 @@ class TrailModel {
     @required this.status,
   });
 
-  factory TrailModel.fromFirestore(DocumentSnapshot doc) {
-    Map data = doc.data;
-
+  factory TrailModel.fromJson(Map<dynamic, dynamic> data) {
     return TrailModel(
       id: data['id'],
       title: data['title'],
       image: data['image'],
-      modules: data['modules'],
+      modules: data['modules'].cast<int>(),
       score: data['score'],
       status: data['status'],
     );
