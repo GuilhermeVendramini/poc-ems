@@ -1,8 +1,8 @@
 import 'package:ems/app/repositories/hive/hive_events/models_adapters/hive_event_model.dart';
+import 'package:ems/app/repositories/hive/hive_instance.dart';
 import 'package:ems/app/shared/models/event_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart';
 
 class HiveEventsRepository {
   Box<Map> _eventsBox;
@@ -10,8 +10,7 @@ class HiveEventsRepository {
   Future<Null> loadEventsBox() async {
     if (_eventsBox == null) {
       try {
-        var dir = await getApplicationDocumentsDirectory();
-        Hive.init(dir.path);
+        await HiveInstance.initHive();
         Hive.registerAdapter(HiveEventModelAdapter());
         _eventsBox = await Hive.openBox<Map>('eventsBox');
       } catch (e) {

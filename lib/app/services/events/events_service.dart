@@ -12,12 +12,12 @@ class EventsService {
       HiveEventsInstance.repository;
 
   Future<List<EventModel>> getCachedEvents() async {
-    List<EventModel> events;
-    events = await _hiveEventsRepository.getEvents();
+    List<EventModel> _events;
+    _events = await _hiveEventsRepository.getEvents();
 
-    if (events != null && events.length > 0) {
-      events.sort((a, b) => a.date.compareTo(b.date));
-      return events;
+    if (_events != null && _events.length > 0) {
+      _events.sort((a, b) => a.date.compareTo(b.date));
+      return _events;
     }
 
     return null;

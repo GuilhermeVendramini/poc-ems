@@ -1,8 +1,8 @@
+import 'package:ems/app/repositories/hive/hive_instance.dart';
 import 'package:ems/app/repositories/hive/hive_user/models_adapters/hive_user_model.dart';
 import 'package:ems/app/shared/models/user_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart';
 
 class HiveUserRepository {
   Box<HiveUserModel> _currentUserBox;
@@ -10,8 +10,7 @@ class HiveUserRepository {
   Future<Null> loadCurrentUserBox() async {
     if (_currentUserBox == null) {
       try {
-        var dir = await getApplicationDocumentsDirectory();
-        Hive.init(dir.path);
+        await HiveInstance.initHive();
         Hive.registerAdapter(HiveUserModelAdapter());
         _currentUserBox = await Hive.openBox<HiveUserModel>('currentUserBox');
       } catch (e) {
