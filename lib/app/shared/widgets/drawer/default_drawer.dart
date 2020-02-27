@@ -32,7 +32,7 @@ class _DefaultDrawerState extends State<DefaultDrawer> {
             leading: Icon(Icons.school),
             title: Text('Trilhas'),
             onTap: () {
-              Modular.to.pushReplacementNamed('/trails');
+              Modular.to.pushReplacementNamed('/app.services.trails');
             },
           ),
           ListTile(

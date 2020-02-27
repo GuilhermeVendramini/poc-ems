@@ -30,7 +30,7 @@ class CoreModule extends MainModule {
         Router('/recovery', module: RecoveryPasswordModule()),
         Router('/events', module: EventsModule()),
         Router('/event', module: EventModule()),
-        Router('/trails', module: TrailsModule()),
+        Router('/app.services.trails', module: TrailsModule()),
       ];
 
   static Inject get to => Inject<CoreModule>.of();
