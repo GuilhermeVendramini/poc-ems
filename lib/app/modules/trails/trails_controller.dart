@@ -24,9 +24,9 @@ abstract class _TrailsBase with Store {
   @action
   Future<Null> loadTrails() async {
     //try {
-      trailsStatus = TrailsStatus.LOADING;
-      trails = await _trailsService.getTrails();
-      trailsStatus = TrailsStatus.DONE;
+    trailsStatus = TrailsStatus.LOADING;
+    trails = await _trailsService.getTrails();
+    trailsStatus = TrailsStatus.DONE;
 /*    } catch (e) {
       trailsStatus = TrailsStatus.ERROR;
       print('Class TrailsController - loadTrails: $e');

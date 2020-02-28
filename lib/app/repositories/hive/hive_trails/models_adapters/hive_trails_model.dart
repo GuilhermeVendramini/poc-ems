@@ -1,5 +1,4 @@
 import 'package:ems/app/repositories/hive/hive_trails/models_adapters/hive_trail_model.dart';
-import 'package:ems/app/shared/models/trail_model.dart';
 import 'package:ems/app/shared/models/trails_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';

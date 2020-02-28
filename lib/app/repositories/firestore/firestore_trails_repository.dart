@@ -5,9 +5,7 @@ class FirestoreTrailsRepository {
   Firestore firestore = FirestoreService.firestore;
 
   Future<QuerySnapshot> loadTrails() {
-    return firestore
-        .collection("trails")
-        .getDocuments();
+    return firestore.collection("trails").getDocuments();
   }
 
   Future<QuerySnapshot> loadTrailById(int id) {

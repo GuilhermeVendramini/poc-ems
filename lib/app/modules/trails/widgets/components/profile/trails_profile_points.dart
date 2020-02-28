@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class TrailsProfilePoints extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final int userScore = 100;
+
     return Column(
       children: <Widget>[
         Row(
@@ -16,7 +18,9 @@ class TrailsProfilePoints extends StatelessWidget {
               width: 4.0,
             ),
             Text(
-              '100',
+              userScore.toString().length <= 5
+                  ? userScore.toString()
+                  : '+ ${userScore.toString().substring(0, 5)}',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0,

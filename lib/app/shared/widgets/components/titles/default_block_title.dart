@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class DefaultBlockTitle extends StatelessWidget {
   final String text;
+  final int maxLines;
 
-  DefaultBlockTitle({@required this.text});
+  DefaultBlockTitle({@required this.text, this.maxLines = 2});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,8 @@ class DefaultBlockTitle extends StatelessWidget {
         color: Colors.black87,
         fontSize: 18.0,
       ),
+      maxLines: maxLines,
+      overflow: TextOverflow.ellipsis,
     );
   }
 }

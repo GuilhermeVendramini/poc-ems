@@ -17,6 +17,7 @@ class EventCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: InkWell(
+        borderRadius: BorderRadius.circular(10.0),
         onTap: () {
           Modular.to.pushNamed('/event/${event.id}');
         },

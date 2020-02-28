@@ -72,7 +72,10 @@ class _TrailsPageState extends State<TrailsPage> with TickerProviderStateMixin {
               TrailsBlock(
                 category: 1,
               ),
-              Icon(Icons.work),
+              Icon(
+                Icons.work,
+                color: Colors.grey,
+              ),
             ],
           ),
         ),
