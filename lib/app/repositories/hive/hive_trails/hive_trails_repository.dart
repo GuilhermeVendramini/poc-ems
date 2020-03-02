@@ -94,12 +94,14 @@ class HiveTrailsRepository {
 
   Future<TrailModel> getTrailById(
       {@required int id, @required int trailId}) async {
-    if (trails != null) {
-      TrailsModel _trails = trails.firstWhere((trail) => trail.id == id);
-      TrailModel _trail =
-          _trails.trails.firstWhere((trail) => trail.id == trailId);
-      return _trail;
+    if (trails == null) {
+      print('nullllll');
+      trails = await getTrails();
     }
-    return null;
+
+    TrailsModel _trails = trails.firstWhere((trail) => trail.id == id);
+    TrailModel _trail =
+        _trails.trails.firstWhere((trail) => trail.id == trailId);
+    return _trail;
   }
 }

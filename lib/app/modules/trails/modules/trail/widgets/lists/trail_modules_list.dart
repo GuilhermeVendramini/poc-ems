@@ -1,20 +1,19 @@
+import 'package:ems/app/modules/trails/modules/trail/trail_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class TrailModulesList extends StatelessWidget {
-  final List<int> modules;
-
-  TrailModulesList({@required this.modules});
-
   @override
   Widget build(BuildContext context) {
+    TrailController _trailController = Modular.get<TrailController>();
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      itemCount: modules.length,
+      itemCount: _trailController.modules.length,
       itemBuilder: (_, int index) {
         return Container(
           height: 300.0,
-          child: Text(modules[index].toString()),
+          child: Text(_trailController.modules[index].title),
         );
       },
     );

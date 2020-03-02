@@ -26,6 +26,23 @@ mixin _$TrailController on _TrailBase, Store {
     }, _$trailAtom, name: '${_$trailAtom.name}_set');
   }
 
+  final _$modulesAtom = Atom(name: '_TrailBase.modules');
+
+  @override
+  List<ModuleModel> get modules {
+    _$modulesAtom.context.enforceReadPolicy(_$modulesAtom);
+    _$modulesAtom.reportObserved();
+    return super.modules;
+  }
+
+  @override
+  set modules(List<ModuleModel> value) {
+    _$modulesAtom.context.conditionallyRunInAction(() {
+      super.modules = value;
+      _$modulesAtom.reportChanged();
+    }, _$modulesAtom, name: '${_$modulesAtom.name}_set');
+  }
+
   final _$trailsCategoryAtom = Atom(name: '_TrailBase.trailsCategory');
 
   @override
@@ -60,6 +77,23 @@ mixin _$TrailController on _TrailBase, Store {
     }, _$trailStatusAtom, name: '${_$trailStatusAtom.name}_set');
   }
 
+  final _$modulesStatusAtom = Atom(name: '_TrailBase.modulesStatus');
+
+  @override
+  ModulesStatus get modulesStatus {
+    _$modulesStatusAtom.context.enforceReadPolicy(_$modulesStatusAtom);
+    _$modulesStatusAtom.reportObserved();
+    return super.modulesStatus;
+  }
+
+  @override
+  set modulesStatus(ModulesStatus value) {
+    _$modulesStatusAtom.context.conditionallyRunInAction(() {
+      super.modulesStatus = value;
+      _$modulesStatusAtom.reportChanged();
+    }, _$modulesStatusAtom, name: '${_$modulesStatusAtom.name}_set');
+  }
+
   final _$loadTrailByIdAsyncAction = AsyncAction('loadTrailById');
 
   @override
@@ -68,10 +102,17 @@ mixin _$TrailController on _TrailBase, Store {
         .run(() => super.loadTrailById(id: id, trailId: trailId));
   }
 
+  final _$loadModulesByIdsAsyncAction = AsyncAction('loadModulesByIds');
+
+  @override
+  Future<Null> loadModulesByIds(List<int> ids) {
+    return _$loadModulesByIdsAsyncAction.run(() => super.loadModulesByIds(ids));
+  }
+
   @override
   String toString() {
     final string =
-        'trail: ${trail.toString()},trailsCategory: ${trailsCategory.toString()},trailStatus: ${trailStatus.toString()}';
+        'trail: ${trail.toString()},modules: ${modules.toString()},trailsCategory: ${trailsCategory.toString()},trailStatus: ${trailStatus.toString()},modulesStatus: ${modulesStatus.toString()}';
     return '{$string}';
   }
 }

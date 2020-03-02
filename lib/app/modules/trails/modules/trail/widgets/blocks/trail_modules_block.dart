@@ -4,10 +4,6 @@ import 'package:ems/app/shared/widgets/components/titles/default_block_title.dar
 import 'package:flutter/material.dart';
 
 class TrailModulesBlock extends StatelessWidget {
-  final List<int> modules;
-
-  TrailModulesBlock({@required this.modules});
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -34,9 +30,7 @@ class TrailModulesBlock extends StatelessWidget {
                 SizedBox(
                   height: 20.0,
                 ),
-                TrailModulesList(
-                  modules: modules,
-                ),
+                TrailModulesList(),
               ],
             ),
           ),
