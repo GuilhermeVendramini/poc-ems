@@ -24,6 +24,9 @@ class HiveTrailModel implements TrailModel {
   @HiveField(5)
   List<int> modules;
 
+  @HiveField(6)
+  String category;
+
   HiveTrailModel({
     @required this.id,
     @required this.title,
@@ -31,5 +34,6 @@ class HiveTrailModel implements TrailModel {
     @required this.status,
     @required this.score,
     @required this.modules,
+    @required this.category,
   });
 }

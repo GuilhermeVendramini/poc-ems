@@ -53,10 +53,10 @@ class EventsService {
   }
 
   Future<EventModel> getCachedEventById(String id) async {
-    EventModel event;
-    event = await _hiveEventsRepository.getEventById(id);
+    EventModel _event;
+    _event = await _hiveEventsRepository.getEventById(id);
 
-    return event;
+    return _event;
   }
 
   Future<EventModel> getEventById(String id) async {
@@ -79,7 +79,7 @@ class EventsService {
       }
       return null;
     } catch (e) {
-      print('Class EventsService - getEvents: $e');
+      print('Class EventsService - getEventById: $e');
       _event = await getCachedEventById(id);
       return _event;
     }

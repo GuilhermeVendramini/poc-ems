@@ -41,6 +41,7 @@ class TrailsList extends StatelessWidget {
                   itemBuilder: (_, int indexTrail) {
                     TrailModel trail = trails[index].trails[indexTrail];
                     return TrailCard(
+                      id: trails[index].id,
                       trail: trail,
                     );
                   },

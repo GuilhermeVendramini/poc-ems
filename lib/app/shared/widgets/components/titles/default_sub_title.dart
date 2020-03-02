@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
 
-class DefaultPageTitle extends StatelessWidget {
+class DefaultSubTitle extends StatelessWidget {
   final String text;
-  final TextAlign textAlign;
   final int maxLines;
 
-  DefaultPageTitle(
-      {@required this.text,
-      this.textAlign = TextAlign.center,
-      this.maxLines = 4});
+  DefaultSubTitle({@required this.text, this.maxLines = 4});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      textAlign: textAlign,
       style: TextStyle(
-        color: Colors.white,
-        fontSize: 20.0,
         fontWeight: FontWeight.w600,
+        color: Colors.amber,
+        fontSize: 14.0,
       ),
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,

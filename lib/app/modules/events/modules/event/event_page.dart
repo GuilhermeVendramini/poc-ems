@@ -1,8 +1,7 @@
 import 'package:ems/app/modules/events/modules/event/event_controller.dart';
-import 'package:ems/app/modules/events/modules/event/widgets/blocks/event_page_block.dart';
+import 'package:ems/app/modules/events/modules/event/widgets/blocks/event_main_block.dart';
 import 'package:ems/app/shared/models/event_model.dart';
 import 'package:ems/app/shared/utils/handle_tab_selection/defaultHandleTabSelection.dart';
-import 'package:ems/app/shared/widgets/buttons/default_back_button.dart';
 import 'package:ems/app/shared/widgets/buttons/default_raised_button.dart';
 import 'package:ems/app/shared/widgets/drawer/default_drawer.dart';
 import 'package:ems/app/shared/widgets/tabbar/default_tabbar.dart';
@@ -45,42 +44,35 @@ class _EventPageState extends State<EventPage> with TickerProviderStateMixin {
     return Scaffold(
       key: _scaffoldKey,
       endDrawer: DefaultDrawer(),
-      body: Stack(
-        children: <Widget>[
-          Observer(
-            builder: (_) {
-              switch (_eventController.eventStatus) {
-                case EventStatus.LOADING:
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                  break;
-                case EventStatus.ERROR:
-                  return Center(
-                    child: Text('Erro ao carregar evento'),
-                  );
-                  break;
-                case EventStatus.DONE:
-                  EventModel _event = _eventController.event;
-                  return _event != null
-                      ? SingleChildScrollView(
-                          child: EventPageBlock(
-                            event: _event,
-                          ),
-                        )
-                      : Container();
-                  break;
-                case EventStatus.IDLE:
-                default:
-                  return Container();
-                  break;
-              }
-            },
-          ),
-          SafeArea(
-            child: DefaultBackButton(),
-          ),
-        ],
+      body: Observer(
+        builder: (_) {
+          switch (_eventController.eventStatus) {
+            case EventStatus.LOADING:
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+              break;
+            case EventStatus.ERROR:
+              return Center(
+                child: Text('Erro ao carregar evento'),
+              );
+              break;
+            case EventStatus.DONE:
+              EventModel _event = _eventController.event;
+              return _event != null
+                  ? SingleChildScrollView(
+                      child: EventMainBlock(
+                        event: _event,
+                      ),
+                    )
+                  : Container();
+              break;
+            case EventStatus.IDLE:
+            default:
+              return Container();
+              break;
+          }
+        },
       ),
       floatingActionButton: DefaultRaisedButton(
         buttonColor: Colors.blueAccent,

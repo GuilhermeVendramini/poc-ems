@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TrailsProfileProgress extends StatelessWidget {
+class TrailsProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(

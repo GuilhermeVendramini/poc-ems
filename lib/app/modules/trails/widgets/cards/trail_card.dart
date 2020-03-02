@@ -7,9 +7,10 @@ import 'package:flutter/painting.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class TrailCard extends StatelessWidget {
+  final int id;
   final TrailModel trail;
 
-  TrailCard({@required this.trail});
+  TrailCard({@required this.id, @required this.trail});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class TrailCard extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(10.0),
         onTap: () {
-          Modular.to.pushNamed('/trail/${trail.id}');
+          Modular.to.pushNamed('/trail/$id/${trail.id}');
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

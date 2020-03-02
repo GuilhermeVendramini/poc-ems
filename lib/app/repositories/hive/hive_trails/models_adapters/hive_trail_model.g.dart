@@ -23,13 +23,14 @@ class HiveTrailModelAdapter extends TypeAdapter<HiveTrailModel> {
       status: fields[2] as int,
       score: fields[1] as int,
       modules: (fields[5] as List)?.cast<int>(),
+      category: fields[6] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, HiveTrailModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -41,6 +42,8 @@ class HiveTrailModelAdapter extends TypeAdapter<HiveTrailModel> {
       ..writeByte(4)
       ..write(obj.title)
       ..writeByte(5)
-      ..write(obj.modules);
+      ..write(obj.modules)
+      ..writeByte(6)
+      ..write(obj.category);
   }
 }

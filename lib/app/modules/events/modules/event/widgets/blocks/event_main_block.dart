@@ -1,14 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ems/app/shared/models/event_model.dart';
+import 'package:ems/app/shared/widgets/buttons/default_back_button.dart';
 import 'package:ems/app/shared/widgets/components/body/default_body.dart';
 import 'package:ems/app/shared/widgets/components/dates/default_display_date.dart';
 import 'package:ems/app/shared/widgets/components/titles/default_block_title.dart';
 import 'package:flutter/material.dart';
 
-class EventPageBlock extends StatelessWidget {
+class EventMainBlock extends StatelessWidget {
   final EventModel event;
 
-  EventPageBlock({@required this.event});
+  EventMainBlock({@required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class EventPageBlock extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
+          alignment: Alignment.topLeft,
           decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
@@ -23,6 +25,10 @@ class EventPageBlock extends StatelessWidget {
             ),
           ),
           height: 300.0,
+          width: double.maxFinite,
+          child: SafeArea(
+            child: DefaultBackButton(),
+          ),
         ),
         Padding(
           padding: EdgeInsets.all(20.0),
