@@ -9,6 +9,7 @@ import 'package:ems/app/modules/auth/register/register_module.dart';
 import 'package:ems/app/modules/events/events_module.dart';
 import 'package:ems/app/modules/events/modules/event/event_module.dart';
 import 'package:ems/app/modules/home/home_module.dart';
+import 'package:ems/app/modules/trails/modules/module/module_module.dart';
 import 'package:ems/app/modules/trails/modules/trail/trail_module.dart';
 import 'package:ems/app/modules/trails/trails_module.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class CoreModule extends MainModule {
         Router('/event', module: EventModule()),
         Router('/trails', module: TrailsModule()),
         Router('/trail', module: TrailModule()),
+        Router('/module', module: ModuleModule()),
       ];
 
   static Inject get to => Inject<CoreModule>.of();
