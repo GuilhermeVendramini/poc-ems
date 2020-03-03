@@ -8,6 +8,10 @@ class TrailModulesBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
+        Container(
+          color: Colors.black,
+          height: 80.0,
+        ),
         Padding(
           padding: EdgeInsets.only(top: 10.0),
           child: Container(
@@ -26,9 +30,6 @@ class TrailModulesBlock extends StatelessWidget {
                 ),
                 DefaultBlockTitle(
                   text: 'Módulos',
-                ),
-                SizedBox(
-                  height: 20.0,
                 ),
                 TrailModulesList(),
               ],

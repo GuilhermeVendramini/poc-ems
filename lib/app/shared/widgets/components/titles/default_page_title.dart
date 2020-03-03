@@ -18,7 +18,7 @@ class DefaultPageTitle extends StatelessWidget {
       style: TextStyle(
         color: Colors.white,
         fontSize: 20.0,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.bold,
       ),
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,

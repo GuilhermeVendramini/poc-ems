@@ -1,4 +1,5 @@
 import 'package:ems/app/modules/trails/modules/trail/trail_controller.dart';
+import 'package:ems/app/modules/trails/modules/trail/widgets/cards/trail_module_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -11,9 +12,8 @@ class TrailModulesList extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       itemCount: _trailController.modules.length,
       itemBuilder: (_, int index) {
-        return Container(
-          height: 300.0,
-          child: Text(_trailController.modules[index].title),
+        return TrailModuleCard(
+          module: _trailController.modules[index],
         );
       },
     );

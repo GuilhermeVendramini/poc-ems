@@ -16,6 +16,7 @@ class ModulesService {
     _modules = await _hiveModulesRepository.getModulesByIds(ids);
 
     if (_modules != null && _modules.length > 0) {
+      _modules.sort((a, b) => (b.enabled ? 1 : 0) - (a.enabled ? 1 : 0));
       return _modules;
     }
 
@@ -39,6 +40,7 @@ class ModulesService {
       if (_documents.isNotEmpty) {
         _modules =
             _documents.map((doc) => ModuleModel.fromFirestore(doc)).toList();
+        _modules.sort((a, b) => (b.enabled ? 1 : 0) - (a.enabled ? 1 : 0));
         _hiveModulesRepository.saveModules(modules: _modules);
 
         return _modules;
@@ -46,7 +48,8 @@ class ModulesService {
       return null;
     } catch (e) {
       print('Class ModulesService - getModules: $e');
-      return null;
+      _modules = await getCachedModules(ids);
+      return _modules;
     }
   }
 }

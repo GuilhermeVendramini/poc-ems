@@ -11,8 +11,8 @@ class DefaultBlockTitle extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontWeight: FontWeight.w600,
-        color: Colors.black87,
+        fontWeight: FontWeight.bold,
+        color: Colors.black54,
         fontSize: 18.0,
       ),
       maxLines: maxLines,

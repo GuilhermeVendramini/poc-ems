@@ -31,7 +31,7 @@ class _TrailPageState extends State<TrailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Observer(builder: (_) {
         switch (_trailController.trailStatus) {
           case TrailStatus.LOADING:

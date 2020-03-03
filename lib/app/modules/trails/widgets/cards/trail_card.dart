@@ -21,9 +21,11 @@ class TrailCard extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(10.0),
-        onTap: () {
-          Modular.to.pushNamed('/trail/$id/${trail.id}');
-        },
+        onTap: trail.status != 3
+            ? () {
+                Modular.to.pushNamed('/trail/$id/${trail.id}');
+              }
+            : null,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

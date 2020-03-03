@@ -5,7 +5,6 @@ import 'package:ems/app/modules/trails/modules/trail/widgets/components/containe
 import 'package:ems/app/shared/models/module_model.dart';
 import 'package:ems/app/shared/models/trail_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -13,10 +12,6 @@ class TrailMainBlock extends StatelessWidget {
   final TrailModel trail;
 
   TrailMainBlock({@required this.trail});
-
-  final _textStyle = TextStyle(
-    color: Colors.white,
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +33,6 @@ class TrailMainBlock extends StatelessWidget {
               return TrailDefaultContainer(
                 widget: Text(
                   'Erro ao carregar os módulos',
-                  style: _textStyle,
                 ),
               );
               break;
@@ -49,7 +43,6 @@ class TrailMainBlock extends StatelessWidget {
                   : TrailDefaultContainer(
                       widget: Text(
                         'Essa trilha ainda não possui módulos',
-                        style: _textStyle,
                       ),
                     );
               break;
