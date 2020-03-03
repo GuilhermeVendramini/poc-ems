@@ -60,10 +60,8 @@ class _EventPageState extends State<EventPage> with TickerProviderStateMixin {
             case EventStatus.DONE:
               EventModel _event = _eventController.event;
               return _event != null
-                  ? SingleChildScrollView(
-                      child: EventMainBlock(
-                        event: _event,
-                      ),
+                  ? EventMainBlock(
+                      event: _event,
                     )
                   : Container();
               break;

@@ -4,6 +4,7 @@ import 'package:ems/app/modules/trails/modules/trail/widgets/blocks/trail_module
 import 'package:ems/app/modules/trails/modules/trail/widgets/components/containers/trail_default_container.dart';
 import 'package:ems/app/shared/models/module_model.dart';
 import 'package:ems/app/shared/models/trail_model.dart';
+import 'package:ems/app/shared/widgets/appbar/default_sliver_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -16,42 +17,56 @@ class TrailMainBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TrailController _trailController = Modular.get<TrailController>();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        TrailHeaderBlock(
-          trail: trail,
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverPersistentHeader(
+          delegate: DefaultSliverAppBar(
+            expandedHeight: 400,
+            title: trail.title,
+            imagePath: trail.image,
+            content: TrailHeaderBlock(
+              trail: trail,
+            ),
+          ),
+          pinned: true,
         ),
-        Observer(builder: (_) {
-          switch (_trailController.modulesStatus) {
-            case ModulesStatus.LOADING:
-              return TrailDefaultContainer(
-                widget: CircularProgressIndicator(),
-              );
-              break;
-            case ModulesStatus.ERROR:
-              return TrailDefaultContainer(
-                widget: Text(
-                  'Erro ao carregar os módulos',
-                ),
-              );
-              break;
-            case ModulesStatus.DONE:
-              List<ModuleModel> _modules = _trailController.modules;
-              return _modules != null
-                  ? TrailModulesBlock()
-                  : TrailDefaultContainer(
+        SliverPadding(
+          padding: EdgeInsets.zero,
+          sliver: SliverList(
+            delegate: SliverChildListDelegate([
+              Observer(builder: (_) {
+                switch (_trailController.modulesStatus) {
+                  case ModulesStatus.LOADING:
+                    return TrailDefaultContainer(
+                      widget: CircularProgressIndicator(),
+                    );
+                    break;
+                  case ModulesStatus.ERROR:
+                    return TrailDefaultContainer(
                       widget: Text(
-                        'Essa trilha ainda não possui módulos',
+                        'Erro ao carregar os módulos',
                       ),
                     );
-              break;
-            case ModulesStatus.IDLE:
-            default:
-              return Container();
-              break;
-          }
-        }),
+                    break;
+                  case ModulesStatus.DONE:
+                    List<ModuleModel> _modules = _trailController.modules;
+                    return _modules != null
+                        ? TrailModulesBlock()
+                        : TrailDefaultContainer(
+                            widget: Text(
+                              'Essa trilha ainda não possui módulos',
+                            ),
+                          );
+                    break;
+                  case ModulesStatus.IDLE:
+                  default:
+                    return Container();
+                    break;
+                }
+              }),
+            ]),
+          ),
+        ),
       ],
     );
   }

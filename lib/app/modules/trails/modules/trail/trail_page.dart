@@ -47,10 +47,8 @@ class _TrailPageState extends State<TrailPage> {
           case TrailStatus.DONE:
             TrailModel _trail = _trailController.trail;
             return _trail != null
-                ? SingleChildScrollView(
-                    child: TrailMainBlock(
-                      trail: _trail,
-                    ),
+                ? TrailMainBlock(
+                    trail: _trail,
                   )
                 : Container();
             break;

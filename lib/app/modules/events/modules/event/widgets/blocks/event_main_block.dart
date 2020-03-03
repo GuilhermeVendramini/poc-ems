@@ -1,6 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ems/app/shared/models/event_model.dart';
-import 'package:ems/app/shared/widgets/buttons/default_back_button.dart';
+import 'package:ems/app/shared/widgets/appbar/default_sliver_appbar.dart';
 import 'package:ems/app/shared/widgets/components/body/default_body.dart';
 import 'package:ems/app/shared/widgets/components/dates/default_display_date.dart';
 import 'package:ems/app/shared/widgets/components/titles/default_block_title.dart';
@@ -13,28 +12,20 @@ class EventMainBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Container(
-          alignment: Alignment.topLeft,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: CachedNetworkImageProvider(event.image),
-            ),
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverPersistentHeader(
+          delegate: DefaultSliverAppBar(
+            expandedHeight: 400,
+            title: event.title,
+            imagePath: event.image,
           ),
-          height: 300.0,
-          width: double.maxFinite,
-          child: SafeArea(
-            child: DefaultBackButton(),
-          ),
+          pinned: true,
         ),
-        Padding(
+        SliverPadding(
           padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
+          sliver: SliverList(
+            delegate: SliverChildListDelegate([
               DefaultBlockTitle(
                 text: event.title,
               ),
@@ -51,8 +42,8 @@ class EventMainBlock extends StatelessWidget {
               ),
               DefaultBody(
                 text: event.body,
-              )
-            ],
+              ),
+            ]),
           ),
         ),
       ],
