@@ -23,7 +23,7 @@ class DefaultSliverAppBar extends SliverPersistentHeaderDelegate {
   DefaultSliverAppBar({
     @required this.expandedHeight,
     @required this.title,
-    @required this.imagePath,
+    this.imagePath,
     this.content,
     this.showBackButton = true,
     this.hideContent = 1.4,
@@ -36,10 +36,12 @@ class DefaultSliverAppBar extends SliverPersistentHeaderDelegate {
       fit: StackFit.expand,
       overflow: Overflow.clip,
       children: [
-        CachedNetworkImage(
-          imageUrl: imagePath,
-          fit: BoxFit.cover,
-        ),
+        imagePath != null
+            ? CachedNetworkImage(
+                imageUrl: imagePath,
+                fit: BoxFit.cover,
+              )
+            : Container(),
         Positioned(
           child: Align(
             alignment: Alignment.bottomLeft,
@@ -97,7 +99,7 @@ class DefaultSliverAppBar extends SliverPersistentHeaderDelegate {
                     DefaultBackButton(),
                     Expanded(
                       child: Text(
-                        this.title,
+                        title,
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w700,

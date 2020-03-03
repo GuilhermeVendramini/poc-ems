@@ -43,10 +43,8 @@ class _ModulePageState extends State<ModulePage> {
             case ModuleStatus.DONE:
               ModuleModel _module = _moduleController.module;
               return _module != null
-                  ? SingleChildScrollView(
-                      child: ModuleMainBlock(
-                        module: _module,
-                      ),
+                  ? ModuleMainBlock(
+                      module: _module,
                     )
                   : Container();
               break;

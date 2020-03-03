@@ -73,110 +73,106 @@ class _DefaultVideoPlayerState extends State<DefaultVideoPlayer> {
       padding: EdgeInsets.only(bottom: 2.0),
       color: _containerColor,
       child: _videoPlayerController.value.initialized
-          ? SafeArea(
-              child: Stack(
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: _playAndPause,
-                    child: Stack(
-                      children: <Widget>[
-                        AspectRatio(
-                          aspectRatio: _videoPlayerController.value.aspectRatio,
-                          child: VideoPlayer(_videoPlayerController),
-                        ),
-                        _videoPlayerController.value.isPlaying
-                            ? Container()
-                            : Positioned(
-                                top: 0.0,
-                                bottom: 0.0,
-                                right: 0.0,
-                                left: 0.0,
-                                child: Icon(
-                                  Icons.play_circle_outline,
-                                  size: 80.0,
-                                  color: Colors.white,
+          ? Stack(
+              children: <Widget>[
+                GestureDetector(
+                  onTap: _playAndPause,
+                  child: Stack(
+                    children: <Widget>[
+                      AspectRatio(
+                        aspectRatio: _videoPlayerController.value.aspectRatio,
+                        child: VideoPlayer(_videoPlayerController),
+                      ),
+                      _videoPlayerController.value.isPlaying
+                          ? Container()
+                          : Positioned(
+                              top: 0.0,
+                              bottom: 0.0,
+                              right: 0.0,
+                              left: 0.0,
+                              child: Icon(
+                                Icons.play_circle_outline,
+                                size: 80.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                    ],
+                  ),
+                ),
+                _videoPlayerController.value.isPlaying
+                    ? Container()
+                    : Positioned(
+                        bottom: 0.0,
+                        right: 20.0,
+                        left: 0.0,
+                        child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Slider(
+                                  max: _videoPlayerController
+                                      .value.duration.inSeconds
+                                      .toDouble(),
+                                  min: 0.0,
+                                  value: _videoPlayerController
+                                      .value.position.inSeconds
+                                      .toDouble(),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _videoPlayerController.seekTo(
+                                          Duration(seconds: value.toInt()));
+                                    });
+                                  },
                                 ),
                               ),
-                      ],
-                    ),
-                  ),
-                  _videoPlayerController.value.isPlaying
-                      ? Container()
-                      : Positioned(
-                          bottom: 0.0,
-                          right: 20.0,
-                          left: 0.0,
-                          child: Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Row(
-                              children: <Widget>[
-                                Expanded(
-                                  child: Slider(
-                                    max: _videoPlayerController
-                                        .value.duration.inSeconds
-                                        .toDouble(),
-                                    min: 0.0,
-                                    value: _videoPlayerController
-                                        .value.position.inSeconds
-                                        .toDouble(),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _videoPlayerController.seekTo(
-                                            Duration(seconds: value.toInt()));
-                                      });
-                                    },
+                              Row(
+                                children: <Widget>[
+                                  Text(
+                                    _videoPlayerController.value.position
+                                        .toString()
+                                        .substring(2, 7),
+                                    style: _textStyle,
                                   ),
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    Text(
-                                      _videoPlayerController.value.position
-                                          .toString()
-                                          .substring(2, 7),
-                                      style: _textStyle,
-                                    ),
-                                    Text(
-                                      '/',
-                                      style: _textStyle,
-                                    ),
-                                    Text(
-                                      _videoPlayerController.value.duration
-                                          .toString()
-                                          .substring(2, 7),
-                                      style: _textStyle,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                  Text(
+                                    '/',
+                                    style: _textStyle,
+                                  ),
+                                  Text(
+                                    _videoPlayerController.value.duration
+                                        .toString()
+                                        .substring(2, 7),
+                                    style: _textStyle,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                ],
-              ),
+                      ),
+              ],
             )
-          : SafeArea(
-              child: Container(
-                height: 200.0,
-                alignment: Alignment.center,
-                child: _errorLoadingVideo
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            Icons.error_outline,
-                            size: 80.0,
-                            color: Colors.red[200],
+          : Container(
+              height: 200.0,
+              alignment: Alignment.center,
+              child: _errorLoadingVideo
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(
+                          Icons.error_outline,
+                          size: 80.0,
+                          color: Colors.red[200],
+                        ),
+                        Text(
+                          'Erro ao carregar o vídeo',
+                          style: TextStyle(
+                            color: Colors.grey,
                           ),
-                          Text(
-                            'Erro ao carregar o vídeo',
-                            style: TextStyle(
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ],
-                      )
-                    : CircularProgressIndicator(),
-              ),
+                        ),
+                      ],
+                    )
+                  : CircularProgressIndicator(),
             ),
     );
   }

@@ -12,36 +12,41 @@ class ModuleMainBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Stack(
       children: <Widget>[
-        Stack(
-          children: <Widget>[
-            DefaultVideoPlayer(
-              video:
-                  'https://file-examples.com/wp-content/uploads/2017/04/file_example_MP4_480_1_5MG.mp4',
+        CustomScrollView(
+          slivers: <Widget>[
+            SliverPadding(
+              padding: EdgeInsets.only(bottom: 20.0),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  DefaultVideoPlayer(
+                    video:
+                        'https://file-examples.com/wp-content/uploads/2017/04/file_example_MP4_480_1_5MG.mp4',
+                  ),
+                ]),
+              ),
             ),
-            SafeArea(
-              child: DefaultBackButton(),
+            SliverPadding(
+              padding: EdgeInsets.all(20.0),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  DefaultBlockTitle(
+                    text: module.title,
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  DefaultBody(
+                    text: module.body,
+                  ),
+                ]),
+              ),
             ),
           ],
         ),
-        Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              DefaultBlockTitle(
-                text: module.title,
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              DefaultBody(
-                text: module.body,
-              )
-            ],
-          ),
+        SafeArea(
+          child: DefaultBackButton(),
         ),
       ],
     );
