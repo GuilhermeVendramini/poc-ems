@@ -10,6 +10,6 @@ class UserModel {
     @required this.id,
     @required this.name,
     @required this.email,
-    this.image = 'https://i.picsum.photos/id/0/200/200.jpg',
+    this.image = 'https://i.picsum.photos/id/64/200/200.jpg',
   });
 }

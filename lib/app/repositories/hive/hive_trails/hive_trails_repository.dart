@@ -95,7 +95,6 @@ class HiveTrailsRepository {
   Future<TrailModel> getTrailById(
       {@required int id, @required int trailId}) async {
     if (trails == null) {
-      print('nullllll');
       trails = await getTrails();
     }
 

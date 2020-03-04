@@ -85,7 +85,6 @@ abstract class _EventsBase with Store {
 
   EventModel getEventById({@required String id}) {
     if (events != null && events.isNotEmpty) {
-      print(events.firstWhere((event) => event.id == id));
       return events.firstWhere((event) => event.id == id);
     }
     return null;
