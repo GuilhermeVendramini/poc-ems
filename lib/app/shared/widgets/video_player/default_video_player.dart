@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 
 class DefaultVideoPlayer extends StatefulWidget {
@@ -15,6 +16,7 @@ class _DefaultVideoPlayerState extends State<DefaultVideoPlayer> {
   bool _errorLoadingVideo = false;
   TextStyle _textStyle = const TextStyle(color: Colors.white, fontSize: 12.0);
   bool _videoFinished = false;
+  bool _inFullScreen = false;
 
   @override
   void initState() {
@@ -33,6 +35,11 @@ class _DefaultVideoPlayerState extends State<DefaultVideoPlayer> {
   @override
   void dispose() {
     _videoPlayerController.dispose();
+
+    if (_inFullScreen) {
+      SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    }
+
     super.dispose();
   }
 
@@ -65,6 +72,18 @@ class _DefaultVideoPlayerState extends State<DefaultVideoPlayer> {
         _videoFinished = true;
       });
     }
+  }
+
+  void _fullScreen() {
+    setState(() {
+      if (_inFullScreen) {
+        SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+        _inFullScreen = false;
+      } else {
+        SystemChrome.setEnabledSystemUIOverlays([]);
+        _inFullScreen = true;
+      }
+    });
   }
 
   @override
@@ -147,6 +166,20 @@ class _DefaultVideoPlayerState extends State<DefaultVideoPlayer> {
                         ),
                       ),
                     ),
+              Positioned(
+                top: 10.0,
+                right: 10.0,
+                child: SafeArea(
+                  child: GestureDetector(
+                    onTap: _fullScreen,
+                    child: Icon(
+                      _inFullScreen ? Icons.fullscreen_exit : Icons.fullscreen,
+                      color: Colors.white.withOpacity(0.6),
+                      size: 30.0,
+                    ),
+                  ),
+                ),
+              ),
             ],
           )
         : Container(
