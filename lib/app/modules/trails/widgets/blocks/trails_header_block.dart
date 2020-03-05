@@ -1,5 +1,4 @@
 import 'package:ems/app/modules/trails/widgets/blocks/trails_profile_block.dart';
-import 'package:ems/app/shared/widgets/components/titles/default_page_title.dart';
 import 'package:flutter/material.dart';
 
 class TrailsHeaderBlock extends StatelessWidget {
@@ -18,24 +17,7 @@ class TrailsHeaderBlock extends StatelessWidget {
             ),
           ),
         ),
-        SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                height: 10.0,
-              ),
-              DefaultPageTitle(
-                text: 'Trilhas',
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              TrailsProfileBlock(),
-            ],
-          ),
-        ),
+        TrailsProfileBlock(),
       ],
     );
   }

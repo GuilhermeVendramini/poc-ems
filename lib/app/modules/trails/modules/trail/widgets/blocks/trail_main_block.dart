@@ -30,42 +30,39 @@ class TrailMainBlock extends StatelessWidget {
           ),
           pinned: true,
         ),
-        SliverPadding(
-          padding: EdgeInsets.zero,
-          sliver: SliverList(
-            delegate: SliverChildListDelegate([
-              Observer(builder: (_) {
-                switch (_trailController.modulesStatus) {
-                  case ModulesStatus.LOADING:
-                    return TrailDefaultContainer(
-                      widget: CircularProgressIndicator(),
-                    );
-                    break;
-                  case ModulesStatus.ERROR:
-                    return TrailDefaultContainer(
-                      widget: Text(
-                        'Erro ao carregar os módulos',
-                      ),
-                    );
-                    break;
-                  case ModulesStatus.DONE:
-                    List<ModuleModel> _modules = _trailController.modules;
-                    return _modules != null
-                        ? TrailModulesBlock()
-                        : TrailDefaultContainer(
-                            widget: Text(
-                              'Essa trilha ainda não possui módulos',
-                            ),
-                          );
-                    break;
-                  case ModulesStatus.IDLE:
-                  default:
-                    return Container();
-                    break;
-                }
-              }),
-            ]),
-          ),
+        SliverList(
+          delegate: SliverChildListDelegate([
+            Observer(builder: (_) {
+              switch (_trailController.modulesStatus) {
+                case ModulesStatus.LOADING:
+                  return TrailDefaultContainer(
+                    widget: CircularProgressIndicator(),
+                  );
+                  break;
+                case ModulesStatus.ERROR:
+                  return TrailDefaultContainer(
+                    widget: Text(
+                      'Erro ao carregar os módulos',
+                    ),
+                  );
+                  break;
+                case ModulesStatus.DONE:
+                  List<ModuleModel> _modules = _trailController.modules;
+                  return _modules != null
+                      ? TrailModulesBlock()
+                      : TrailDefaultContainer(
+                          widget: Text(
+                            'Essa trilha ainda não possui módulos',
+                          ),
+                        );
+                  break;
+                case ModulesStatus.IDLE:
+                default:
+                  return Container();
+                  break;
+              }
+            }),
+          ]),
         ),
       ],
     );

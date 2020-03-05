@@ -1,6 +1,7 @@
 import 'package:ems/app/modules/trails/widgets/blocks/trails_block.dart';
 import 'package:ems/app/modules/trails/widgets/blocks/trails_header_block.dart';
 import 'package:ems/app/shared/utils/handle_tab_selection/defaultHandleTabSelection.dart';
+import 'package:ems/app/shared/widgets/appbar/simple_sliver_app_bar.dart';
 import 'package:ems/app/shared/widgets/drawer/default_drawer.dart';
 import 'package:ems/app/shared/widgets/tabbar/default_tabbar.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,9 @@ class _TrailsPageState extends State<TrailsPage> with TickerProviderStateMixin {
         body: NestedScrollView(
           headerSliverBuilder: (_, __) {
             return <Widget>[
+              SimpleSliverAppBar(
+                title: 'TRILHAS',
+              ),
               SliverList(
                 delegate: SliverChildListDelegate([
                   TrailsHeaderBlock(),
