@@ -14,14 +14,16 @@ class HomeHeaderBlock extends StatelessWidget {
         children: <Widget>[
           HomeHeaderContent(),
           Positioned(
-            top: 280.0,
-            child: Container(
-              padding: EdgeInsets.all(10.0),
-              height: 80.0,
-              width: _screenWidth,
-              child: DefaultSearch(
-                onTap: () {},
-                hintText: 'Buscar...',
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                padding: EdgeInsets.all(10.0),
+                height: 80.0,
+                width: _screenWidth,
+                child: DefaultSearch(
+                  onTap: () {},
+                  hintText: 'Buscar...',
+                ),
               ),
             ),
           ),

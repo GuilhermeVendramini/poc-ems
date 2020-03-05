@@ -5,17 +5,12 @@ import 'package:ems/app/modules/trails/widgets/components/profile/trails_profile
 import 'package:ems/app/modules/trails/widgets/components/profile/trails_profile_points.dart';
 import 'package:ems/app/modules/trails/widgets/components/progress_indicator/trails_progress_indicator.dart';
 import 'package:ems/app/shared/widgets/buttons/default_flat_button.dart';
+import 'package:ems/app/shared/widgets/components/dividers/default_vertical_divider.dart';
 import 'package:flutter/material.dart';
 
 class TrailsProfileBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _verticalDivider = Container(
-      width: 1.0,
-      height: 30.0,
-      color: Colors.grey[200],
-    );
-
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
@@ -46,9 +41,9 @@ class TrailsProfileBlock extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           TrailsProfilePoints(),
-                          _verticalDivider,
+                          DefaultVerticalDivider(),
                           TrailsProfileModules(),
-                          _verticalDivider,
+                          DefaultVerticalDivider(),
                           TrailsProfileLevel(),
                         ],
                       ),
