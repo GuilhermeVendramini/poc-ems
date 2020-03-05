@@ -16,6 +16,8 @@ class BenefitsService {
       if (_documents.isNotEmpty) {
         _benefits =
             _documents.map((doc) => BenefitModel.fromFirestore(doc)).toList();
+        _benefits
+            .sort((a, b) => (b.status == 1 ? 1 : 0) - (a.status == 1 ? 1 : 0));
         return _benefits;
       }
       return null;

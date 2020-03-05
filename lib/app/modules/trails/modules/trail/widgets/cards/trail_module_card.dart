@@ -48,7 +48,6 @@ class TrailModuleCard extends StatelessWidget {
                   alignment: Alignment.center,
                   children: <Widget>[
                     CachedNetworkImage(
-                      //width: 100.0,
                       height: 80.0,
                       imageUrl: module.image,
                       colorBlendMode: module.enabled ? null : BlendMode.color,
