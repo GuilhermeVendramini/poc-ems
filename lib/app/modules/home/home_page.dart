@@ -1,7 +1,10 @@
+import 'package:ems/app/core/core_initial_controller.dart';
+import 'package:ems/app/modules/home/widgets/tabs/benefits_tab/benefits_tab.dart';
 import 'package:ems/app/modules/home/widgets/tabs/home_tab/home_tab.dart';
 import 'package:ems/app/shared/widgets/drawer/default_drawer.dart';
 import 'package:ems/app/shared/widgets/tabbar/default_tabbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,14 +14,19 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
+  CoreInitialController _coreInitialController;
   TabController _tabController;
-  int _lastIndexTab = 0;
+  int _lastIndexTab;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, length: 5);
+    _coreInitialController = Modular.get<CoreInitialController>();
+    _lastIndexTab = _coreInitialController.initialIndexTab;
+    _tabController = TabController(
+        vsync: this,
+        length: 5,
+        initialIndex: _coreInitialController.initialIndexTab);
     _tabController.addListener(_handleTabSelection);
   }
 
@@ -53,7 +61,7 @@ class _HomePageState extends State<HomePage>
             HomeTab(),
             Icon(Icons.favorite),
             Icon(Icons.supervisor_account),
-            Icon(Icons.redeem),
+            BenefitsTab(),
             Container(),
           ],
         ),

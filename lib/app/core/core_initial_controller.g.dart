@@ -43,6 +43,40 @@ mixin _$CoreInitialController on _CoreInitialBase, Store {
     }, _$eventsStatusAtom, name: '${_$eventsStatusAtom.name}_set');
   }
 
+  final _$benefitsAtom = Atom(name: '_CoreInitialBase.benefits');
+
+  @override
+  List<BenefitModel> get benefits {
+    _$benefitsAtom.context.enforceReadPolicy(_$benefitsAtom);
+    _$benefitsAtom.reportObserved();
+    return super.benefits;
+  }
+
+  @override
+  set benefits(List<BenefitModel> value) {
+    _$benefitsAtom.context.conditionallyRunInAction(() {
+      super.benefits = value;
+      _$benefitsAtom.reportChanged();
+    }, _$benefitsAtom, name: '${_$benefitsAtom.name}_set');
+  }
+
+  final _$benefitsStatusAtom = Atom(name: '_CoreInitialBase.benefitsStatus');
+
+  @override
+  BenefitsStatus get benefitsStatus {
+    _$benefitsStatusAtom.context.enforceReadPolicy(_$benefitsStatusAtom);
+    _$benefitsStatusAtom.reportObserved();
+    return super.benefitsStatus;
+  }
+
+  @override
+  set benefitsStatus(BenefitsStatus value) {
+    _$benefitsStatusAtom.context.conditionallyRunInAction(() {
+      super.benefitsStatus = value;
+      _$benefitsStatusAtom.reportChanged();
+    }, _$benefitsStatusAtom, name: '${_$benefitsStatusAtom.name}_set');
+  }
+
   final _$loadEventsAsyncAction = AsyncAction('loadEvents');
 
   @override
@@ -50,10 +84,17 @@ mixin _$CoreInitialController on _CoreInitialBase, Store {
     return _$loadEventsAsyncAction.run(() => super.loadEvents());
   }
 
+  final _$loadBenefitsAsyncAction = AsyncAction('loadBenefits');
+
+  @override
+  Future<Null> loadBenefits() {
+    return _$loadBenefitsAsyncAction.run(() => super.loadBenefits());
+  }
+
   @override
   String toString() {
     final string =
-        'events: ${events.toString()},eventsStatus: ${eventsStatus.toString()}';
+        'events: ${events.toString()},eventsStatus: ${eventsStatus.toString()},benefits: ${benefits.toString()},benefitsStatus: ${benefitsStatus.toString()}';
     return '{$string}';
   }
 }

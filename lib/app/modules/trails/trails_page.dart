@@ -46,7 +46,7 @@ class _TrailsPageState extends State<TrailsPage> with TickerProviderStateMixin {
       },
       child: Scaffold(
         key: _scaffoldKey,
-        endDrawer: DefaultDrawer(),
+        endDrawer: DefaultDrawer(selectedId: 2),
         body: NestedScrollView(
           headerSliverBuilder: (_, __) {
             return <Widget>[

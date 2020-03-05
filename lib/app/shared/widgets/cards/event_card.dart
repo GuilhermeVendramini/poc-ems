@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ems/app/shared/models/event_model.dart';
 import 'package:ems/app/shared/widgets/components/dates/default_display_date.dart';
+import 'package:ems/app/shared/widgets/components/titles/default_block_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -48,15 +49,10 @@ class EventCard extends StatelessWidget {
                   SizedBox(
                     height: 10.0,
                   ),
-                  Text(
-                    event.title,
+                  DefaultBlockTitle(
+                    text: event.title,
+                    fontSize: 16.0,
                     maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
-                    ),
                   ),
                   SizedBox(
                     height: 10.0,

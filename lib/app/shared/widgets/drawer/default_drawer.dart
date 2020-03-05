@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class DefaultDrawer extends StatefulWidget {
+  final int selectedId;
+
+  DefaultDrawer({this.selectedId});
+
   @override
   _DefaultDrawerState createState() => _DefaultDrawerState();
 }
@@ -22,6 +26,7 @@ class _DefaultDrawerState extends State<DefaultDrawer> {
       child: ListView(
         children: <Widget>[
           ListTile(
+            selected: widget.selectedId == 1 ? true : false,
             leading: Icon(Icons.event),
             title: Text('Eventos'),
             onTap: () {
@@ -29,6 +34,7 @@ class _DefaultDrawerState extends State<DefaultDrawer> {
             },
           ),
           ListTile(
+            selected: widget.selectedId == 2 ? true : false,
             leading: Icon(Icons.school),
             title: Text('Trilhas'),
             onTap: () {

@@ -46,7 +46,7 @@ class _EventsPageState extends State<EventsPage> with TickerProviderStateMixin {
       },
       child: Scaffold(
         key: _scaffoldKey,
-        endDrawer: DefaultDrawer(),
+        endDrawer: DefaultDrawer(selectedId: 1),
         body: Observer(
           builder: (_) {
             switch (_eventsController.eventsStatus) {
