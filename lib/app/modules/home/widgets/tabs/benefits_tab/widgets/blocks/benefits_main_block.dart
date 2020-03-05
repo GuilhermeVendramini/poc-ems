@@ -40,7 +40,9 @@ class BenefitsMainBlock extends StatelessWidget {
                 },
               );
             }
-            return Text('Nenhum benefício no momento');
+            return Center(
+              child: Text('Nenhum benefício no momento'),
+            );
             break;
         }
       },
