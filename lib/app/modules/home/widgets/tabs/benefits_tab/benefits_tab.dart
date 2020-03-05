@@ -33,14 +33,14 @@ class _BenefitsTabState extends State<BenefitsTab>
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              Text('HEADER'),
+              const Text('HEADER'),
               TabBar(
                 controller: _benefitsTabController,
                 unselectedLabelColor: Colors.grey[400],
                 labelColor: Colors.blueAccent,
                 tabs: [
-                  Tab(child: Text('Cupons')),
-                  Tab(child: Text('Meus cupons')),
+                  const Tab(child: const Text('Cupons')),
+                  const Tab(child: const Text('Meus cupons')),
                 ],
               ),
             ]),
@@ -48,11 +48,11 @@ class _BenefitsTabState extends State<BenefitsTab>
         ];
       },
       body: TabBarView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         controller: _benefitsTabController,
         children: <Widget>[
           BenefitsMainBlock(),
-          Icon(
+          const Icon(
             Icons.redeem,
             color: Colors.grey,
           ),
