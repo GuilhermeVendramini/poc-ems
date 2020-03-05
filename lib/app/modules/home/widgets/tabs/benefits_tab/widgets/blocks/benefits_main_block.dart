@@ -26,11 +26,11 @@ class BenefitsMainBlock extends StatelessWidget {
             if (_coreInitialController.benefits != null &&
                 _coreInitialController.benefits.length > 0) {
               return ListView.separated(
-                padding: EdgeInsets.zero,
+                padding: EdgeInsets.all(20.0),
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (BuildContext context, int index) => SizedBox(
-                  height: 20.0,
+                  height: 10.0,
                 ),
                 itemCount: _coreInitialController.benefits.length,
                 itemBuilder: (BuildContext context, int index) {
