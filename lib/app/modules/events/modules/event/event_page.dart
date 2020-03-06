@@ -10,7 +10,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class EventPage extends StatefulWidget {
-  final String id;
+  final int id;
 
   EventPage({@required this.id});
 
@@ -72,11 +72,18 @@ class _EventPageState extends State<EventPage> with TickerProviderStateMixin {
           }
         },
       ),
-      floatingActionButton: DefaultRaisedButton(
-        buttonColor: Colors.blueAccent,
-        textColor: Colors.white,
-        text: 'Tenho interesse',
-        onPressed: () {},
+      floatingActionButton: Observer(
+        builder: (_) {
+          if (_eventController.event != null) {
+            return DefaultRaisedButton(
+              buttonColor: Colors.blueAccent,
+              textColor: Colors.white,
+              text: 'Tenho interesse',
+              onPressed: () {},
+            );
+          }
+          return Container();
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       bottomNavigationBar: DefaultTabBar(

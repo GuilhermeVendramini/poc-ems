@@ -15,7 +15,7 @@ class EventModule extends ChildModule {
           '/:id',
           child: (_, args) => I18n(
             child: EventPage(
-              id: args.params['id'],
+              id: int.tryParse(args.params['id']),
             ),
           ),
         ),

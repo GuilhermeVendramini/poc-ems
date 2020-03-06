@@ -18,7 +18,7 @@ abstract class _EventBase with Store {
   EventsService _eventsService = EventsService();
 
   @action
-  Future<Null> loadEventById(String id) async {
+  Future<Null> loadEventById(int id) async {
     try {
       eventStatus = EventStatus.LOADING;
       event = await _eventsService.getEventById(id);

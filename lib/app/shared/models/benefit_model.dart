@@ -8,6 +8,7 @@ class BenefitModel {
   final int score;
   final String image;
   final String body;
+  final String code;
 
   BenefitModel({
     @required this.id,
@@ -16,6 +17,7 @@ class BenefitModel {
     @required this.score,
     @required this.status,
     @required this.body,
+    @required this.code,
   });
 
   factory BenefitModel.fromFirestore(DocumentSnapshot doc) {
@@ -28,6 +30,7 @@ class BenefitModel {
       image: data['image'],
       score: data['score'],
       status: data['status'],
+      code: data['code'],
     );
   }
 }

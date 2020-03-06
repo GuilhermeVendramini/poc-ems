@@ -11,7 +11,7 @@ class FirestoreEventsRepository {
         .getDocuments();
   }
 
-  Future<QuerySnapshot> loadEventById(String id) {
+  Future<QuerySnapshot> loadEventById(int id) {
     return firestore
         .collection("events")
         .where("id", isEqualTo: id)

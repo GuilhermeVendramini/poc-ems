@@ -52,14 +52,14 @@ class EventsService {
     }
   }
 
-  Future<EventModel> getCachedEventById(String id) async {
+  Future<EventModel> getCachedEventById(int id) async {
     EventModel _event;
     _event = await _hiveEventsRepository.getEventById(id);
 
     return _event;
   }
 
-  Future<EventModel> getEventById(String id) async {
+  Future<EventModel> getEventById(int id) async {
     EventModel _event;
 
     try {

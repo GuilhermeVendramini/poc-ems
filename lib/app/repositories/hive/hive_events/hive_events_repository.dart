@@ -82,7 +82,7 @@ class HiveEventsRepository {
     return null;
   }
 
-  Future<EventModel> getEventById(String id) async {
+  Future<EventModel> getEventById(int id) async {
     await loadEventsBox();
     if (_eventsBox.isNotEmpty) {
       EventModel _event = _eventsBox

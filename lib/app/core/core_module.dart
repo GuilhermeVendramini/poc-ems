@@ -6,6 +6,7 @@ import 'package:ems/app/core/widgets/pages/splash/core_splash_page.dart';
 import 'package:ems/app/modules/auth/login/login_module.dart';
 import 'package:ems/app/modules/auth/recovery_password/recovery_password_module.dart';
 import 'package:ems/app/modules/auth/register/register_module.dart';
+import 'package:ems/app/modules/benefit/benefit_module.dart';
 import 'package:ems/app/modules/events/events_module.dart';
 import 'package:ems/app/modules/events/modules/event/event_module.dart';
 import 'package:ems/app/modules/home/home_module.dart';
@@ -35,6 +36,7 @@ class CoreModule extends MainModule {
         Router('/trails', module: TrailsModule()),
         Router('/trail', module: TrailModule()),
         Router('/module', module: ModuleModule()),
+        Router('/benefit', module: BenefitModule()),
       ];
 
   static Inject get to => Inject<CoreModule>.of();

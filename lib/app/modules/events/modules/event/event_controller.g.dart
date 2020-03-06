@@ -46,7 +46,7 @@ mixin _$EventController on _EventBase, Store {
   final _$loadEventByIdAsyncAction = AsyncAction('loadEventById');
 
   @override
-  Future<Null> loadEventById(String id) {
+  Future<Null> loadEventById(int id) {
     return _$loadEventByIdAsyncAction.run(() => super.loadEventById(id));
   }
 

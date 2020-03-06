@@ -26,6 +26,5 @@ class BenefitsHeaderBlock extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }

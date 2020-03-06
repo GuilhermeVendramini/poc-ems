@@ -4,8 +4,6 @@ import 'package:ems/app/shared/models/user_model.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:platform/platform.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +33,7 @@ void main() {
   setUp(() {
     initModule(CoreModule());
     coreController = CoreModule.to.get<CoreController>();
-    setMockPathProviderPlatform(FakePlatform(operatingSystem: 'android'));
+    //setMockPathProviderPlatform(FakePlatform(operatingSystem: 'android'));
     response = 'test/mock/hive/currentuserbox';
     currentUser = UserModel(name: 'Name', id: 'id', email: 'test@email.com');
   });

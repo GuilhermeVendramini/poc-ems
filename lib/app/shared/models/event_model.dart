@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 class EventModel {
-  final String id;
+  final int id;
   final String title;
   final String image;
   final DateTime date;
