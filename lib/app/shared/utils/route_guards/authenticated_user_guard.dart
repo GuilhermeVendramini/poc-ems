@@ -12,4 +12,7 @@ class AuthenticatedUserGuard implements RouteGuard {
 
     return false;
   }
+
+  @override
+  List<GuardExecutor> get executors => [];
 }
