@@ -1,4 +1,5 @@
 import 'package:ems/app/core/core_initial_controller.dart';
+import 'package:ems/app/modules/home/widgets/tabs/agents_tab/agents_tab.dart';
 import 'package:ems/app/modules/home/widgets/tabs/benefits_tab/benefits_tab.dart';
 import 'package:ems/app/modules/home/widgets/tabs/home_tab/home_tab.dart';
 import 'package:ems/app/shared/widgets/drawer/default_drawer.dart';
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage>
           children: [
             HomeTab(),
             Icon(Icons.favorite),
-            Icon(Icons.supervisor_account),
+            AgentsTab(),
             BenefitsTab(),
             Container(),
           ],

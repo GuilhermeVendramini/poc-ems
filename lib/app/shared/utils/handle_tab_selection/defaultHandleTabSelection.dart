@@ -9,16 +9,20 @@ defaultHandleTabSelection({
   CoreInitialController _coreInitialController =
       Modular.get<CoreInitialController>();
   switch (tabController.index) {
+    case 0:
+      _coreInitialController.initialIndexTab = 0;
+      Modular.to.pushReplacementNamed('/home');
+      break;
+    case 2:
+      _coreInitialController.initialIndexTab = 2;
+      Modular.to.pushReplacementNamed('/home');
+      break;
     case 3:
       _coreInitialController.initialIndexTab = 3;
       Modular.to.pushReplacementNamed('/home');
       break;
     case 4:
       scaffoldKey.currentState.openEndDrawer();
-      break;
-    case 0:
-      _coreInitialController.initialIndexTab = 0;
-      Modular.to.pushReplacementNamed('/home');
       break;
   }
 }
